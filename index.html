@@ -1333,37 +1333,97 @@ body{
     <div class="menu"><span>File</span><span>View</span><span>Image</span></div>
     <div class="body">
       <div class="art-frame">
-        <svg viewBox="0 0 420 270" role="img" aria-label="cute cat under stars illustration">
+        <svg viewBox="0 0 420 270" role="img" aria-label="cute sleeping cat in a pastel dreamy scene">
           <defs>
-            <linearGradient id="catBg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#c9bdd8"/>
-              <stop offset=".62" stop-color="#e7d6e1"/>
-              <stop offset="1" stop-color="#f4e5dd"/>
+            <linearGradient id="catSceneBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d9cce5"/>
+              <stop offset=".52" stop-color="#f0dce6"/>
+              <stop offset="1" stop-color="#f7eadf"/>
+            </linearGradient>
+            <linearGradient id="moonCat" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffdf9"/>
+              <stop offset=".65" stop-color="#f4edf2"/>
+              <stop offset="1" stop-color="#eadfe8"/>
+            </linearGradient>
+            <linearGradient id="blanket" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#efc0d1"/>
+              <stop offset="1" stop-color="#dca1b8"/>
             </linearGradient>
           </defs>
-          <rect width="420" height="270" rx="14" fill="url(#catBg)"/>
-          <g fill="#fff" opacity=".72">
-            <circle cx="72" cy="55" r="2"/><circle cx="120" cy="88" r="1.4"/><circle cx="180" cy="49" r="1.2"/>
-            <circle cx="278" cy="62" r="1.5"/><circle cx="340" cy="84" r="1.3"/><circle cx="368" cy="43" r="1.7"/>
+
+          <!-- background -->
+          <rect width="420" height="270" rx="14" fill="url(#catSceneBg)"/>
+          <g fill="#fff" opacity=".75">
+            <circle cx="60" cy="52" r="1.7"/><circle cx="106" cy="78" r="1.2"/><circle cx="150" cy="43" r="1.4"/>
+            <circle cx="267" cy="50" r="1.6"/><circle cx="322" cy="84" r="1.1"/><circle cx="363" cy="54" r="1.7"/>
+            <circle cx="338" cy="132" r="1.1"/><circle cx="89" cy="128" r="1.0"/>
           </g>
-          <path d="M205 166
-                   C170 160 157 183 164 209
-                   C171 233 194 239 215 229
-                   C238 219 244 194 232 177
-                   C224 166 217 163 205 166Z" fill="#725e6a"/>
-          <path d="M177 177 L168 145 L194 161Z" fill="#725e6a"/>
-          <path d="M225 166 L245 143 L241 181Z" fill="#725e6a"/>
-          <circle cx="192" cy="188" r="2.2" fill="#f5d8df"/>
-          <circle cx="218" cy="186" r="2.2" fill="#f5d8df"/>
-          <path d="M205 192 q-6 7 0 11 q6 -4 0 -11Z" fill="#d7a5b7"/>
-          <path d="M233 205 C273 198 282 218 270 229 C260 238 245 229 251 219" fill="none" stroke="#725e6a" stroke-width="9" stroke-linecap="round"/>
-          <path d="M0 226 Q80 202 152 230 T300 224 T420 229 V270 H0Z" fill="#c5b6c2" opacity=".62"/>
-          <text x="210" y="254" text-anchor="middle" fill="#735c68" font-size="11">tiny_cat.bmp ♡</text>
+
+          <!-- little moon -->
+          <path d="M325 57 a23 23 0 1 0 16 39 a27 27 0 1 1 -16 -39Z" fill="#fff6de" opacity=".88"/>
+
+          <!-- floor clouds -->
+          <path d="M0 226 Q78 205 152 229 T300 224 T420 229 V270 H0Z" fill="#d8c7d3" opacity=".58"/>
+          <path d="M0 236 Q82 220 168 238 T320 233 T420 236 V270 H0Z" fill="#f1dde2" opacity=".72"/>
+
+          <!-- cushion/blanket -->
+          <ellipse cx="211" cy="192" rx="108" ry="34" fill="url(#blanket)" opacity=".95"/>
+          <ellipse cx="211" cy="186" rx="94" ry="24" fill="#f8e3ea" opacity=".8"/>
+
+          <!-- cat shadow -->
+          <ellipse cx="214" cy="170" rx="66" ry="22" fill="#c8b6c6" opacity=".28"/>
+
+          <!-- tail -->
+          <path d="M273 165
+                   C300 160 312 174 309 192
+                   C306 212 280 214 266 201
+                   C280 202 291 194 291 184
+                   C292 175 285 169 273 165Z"
+                fill="url(#moonCat)"/>
+
+          <!-- curled body -->
+          <path d="M160 174
+                   C154 140 176 118 211 118
+                   C247 118 271 141 269 170
+                   C267 196 244 212 213 212
+                   C179 212 161 194 160 174Z"
+                fill="url(#moonCat)"/>
+
+          <!-- head -->
+          <circle cx="182" cy="143" r="31" fill="url(#moonCat)"/>
+
+          <!-- ears -->
+          <path d="M160 126 L168 101 L185 123 Z" fill="url(#moonCat)"/>
+          <path d="M195 123 L210 101 L209 130 Z" fill="url(#moonCat)"/>
+          <path d="M167 119 L171 108 L179 121 Z" fill="#f0cdd8"/>
+          <path d="M196 120 L204 109 L203 123 Z" fill="#f0cdd8"/>
+
+          <!-- face -->
+          <path d="M173 147 q4 4 8 0" stroke="#7e6773" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M188 147 q4 4 8 0" stroke="#7e6773" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M184 154 q3 4 6 0" stroke="#d59aae" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M179 156 q-10 1 -18 5" stroke="#98808d" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M179 160 q-10 3 -17 10" stroke="#98808d" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M192 156 q10 1 18 5" stroke="#98808d" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M192 160 q10 3 17 10" stroke="#98808d" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+          <!-- front paws -->
+          <ellipse cx="207" cy="190" rx="18" ry="10" fill="#fbf5f8"/>
+          <ellipse cx="229" cy="188" rx="18" ry="10" fill="#fbf5f8"/>
+
+          <!-- little bow -->
+          <g transform="translate(247 133) scale(.75)">
+            <path d="M0 8 C-17 -4 -24 3 -20 15 C-16 26 -6 22 4 14Z" fill="#e8aac1"/>
+            <path d="M0 8 C17 -4 24 3 20 15 C16 26 6 22 -4 14Z" fill="#e8aac1"/>
+            <ellipse cx="0" cy="12" rx="5" ry="6" fill="#cf8ca7"/>
+          </g>
+
+          <text x="210" y="253" text-anchor="middle" fill="#725b67" font-size="11">sleepy little cat.bmp ♡</text>
         </svg>
-        <div class="art-caption">tiny_cat.bmp — obviously the desktop needed one.</div>
+        <div class="art-caption">tiny_cat.bmp — much cuter now, and finally worthy of the desktop.</div>
       </div>
     </div>
-    <div class="status">1 tiny cat found</div>
+    <div class="status">1 sleepy little cat found</div>
   </section>
 
 </div>
