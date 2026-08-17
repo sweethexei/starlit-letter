@@ -842,6 +842,157 @@ body{
   }
 }
 
+
+/* Decorative image windows */
+.art-window .panel{
+  padding:14px !important;
+}
+.art-card{
+  height:260px;
+  border-radius:14px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#fff9fb,#fdf3f7);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.62), 0 8px 18px rgba(96,71,82,.10);
+}
+.art-title{
+  text-align:center;
+  margin:8px 0 10px;
+  font-size:12px;
+  color:#8a5a6d;
+  letter-spacing:.6px;
+}
+.art-caption{
+  margin-top:10px;
+  text-align:center;
+  font-size:10px;
+  line-height:1.55;
+  color:#6e5b64;
+}
+
+/* moon scene */
+.moon-scene{
+  background:
+    radial-gradient(circle at 50% 26%, rgba(255,255,255,.18) 0 5px, transparent 6px),
+    radial-gradient(circle at 25% 30%, rgba(255,255,255,.9) 0 1px, transparent 2px),
+    radial-gradient(circle at 70% 22%, rgba(255,255,255,.8) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 63% 48%, rgba(255,255,255,.7) 0 1px, transparent 2px),
+    linear-gradient(180deg,#b7c9e4 0%,#d6d7ea 48%,#f6d9e4 100%);
+}
+.moon-scene:before{
+  content:"";
+  position:absolute;
+  width:88px;height:88px;border-radius:50%;
+  left:calc(50% - 44px);top:36px;
+  background:radial-gradient(circle at 35% 30%, #fffdf8 0%, #f4edf2 60%, #e8deea 100%);
+  box-shadow:0 0 28px rgba(255,255,255,.55);
+}
+.moon-scene:after{
+  content:"☾   ✦   ୨୧";
+  position:absolute;left:0;right:0;bottom:25px;
+  text-align:center;font-size:16px;color:rgba(255,255,255,.75);letter-spacing:10px;
+}
+
+/* pink sky */
+.sky-scene{
+  background:
+    radial-gradient(circle at 20% 24%, rgba(255,255,255,.8) 0 18px, transparent 19px),
+    radial-gradient(circle at 29% 20%, rgba(255,255,255,.8) 0 24px, transparent 25px),
+    radial-gradient(circle at 39% 24%, rgba(255,255,255,.8) 0 17px, transparent 18px),
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,.65) 0 15px, transparent 16px),
+    radial-gradient(circle at 86% 15%, rgba(255,255,255,.65) 0 21px, transparent 22px),
+    linear-gradient(180deg,#f7d8e4 0%,#f5e6ef 38%,#f4ecd8 100%);
+}
+.sky-scene:before{
+  content:"";
+  position:absolute;left:0;right:0;bottom:0;height:80px;
+  background:
+    radial-gradient(circle at 10% 100%, #d6b7c7 0 22px, transparent 23px),
+    radial-gradient(circle at 22% 100%, #d6b7c7 0 34px, transparent 35px),
+    radial-gradient(circle at 36% 100%, #e2c8b0 0 25px, transparent 26px),
+    radial-gradient(circle at 50% 100%, #d5c2db 0 34px, transparent 35px),
+    radial-gradient(circle at 68% 100%, #bdd2d8 0 28px, transparent 29px),
+    radial-gradient(circle at 84% 100%, #d9b1c4 0 32px, transparent 33px);
+}
+.sky-scene:after{
+  content:"pink skies, soft evenings";
+  position:absolute;left:0;right:0;bottom:18px;
+  text-align:center;font-size:11px;color:#80606d;
+}
+
+/* soft corner */
+.soft-scene{
+  background:linear-gradient(180deg,#fff8fb,#f7eff6 55%,#edf0f4);
+}
+.soft-scene .bed{
+  position:absolute;left:24px;right:24px;bottom:34px;height:70px;
+  background:linear-gradient(180deg,#f1d4dc,#e4b8c8);
+  border-radius:18px 18px 14px 14px;
+  box-shadow:0 8px 18px rgba(97,71,83,.12);
+}
+.soft-scene .bed:before{
+  content:"";
+  position:absolute;left:18px;top:14px;width:56px;height:24px;border-radius:14px;
+  background:#fff8fb;
+  box-shadow:68px 0 0 #f8edf1, 136px 0 0 #fff8fb;
+}
+.soft-scene .lamp{
+  position:absolute;right:36px;top:52px;width:22px;height:90px;
+  background:linear-gradient(180deg,#d8c6d3,#c6b3c0);
+}
+.soft-scene .lamp:before{
+  content:"";
+  position:absolute;left:-15px;top:-20px;width:52px;height:28px;
+  background:linear-gradient(180deg,#fff3d7,#f1deae);
+  border-radius:13px 13px 4px 4px;
+  box-shadow:0 0 18px rgba(255,239,177,.35);
+}
+.soft-scene .lamp:after{
+  content:"";
+  position:absolute;left:-12px;bottom:-8px;width:46px;height:8px;border-radius:20px;
+  background:#cab7c3;
+}
+
+/* bows */
+.bow-scene{
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.6) 0 2px, transparent 3px),
+    radial-gradient(circle at 74% 28%, rgba(255,255,255,.6) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 72%, rgba(255,255,255,.6) 0 2px, transparent 3px),
+    linear-gradient(180deg,#f7e0e8,#f8eff3);
+}
+.bow{
+  position:absolute;width:68px;height:42px;
+}
+.bow:before,.bow:after{
+  content:"";position:absolute;top:8px;width:28px;height:24px;
+  background:#ebb5c9;border-radius:60% 60% 50% 50%;
+}
+.bow:before{left:0;transform:rotate(-18deg)}
+.bow:after{right:0;transform:rotate(18deg)}
+.bow i{
+  position:absolute;left:27px;top:10px;width:14px;height:18px;background:#d992ad;border-radius:8px;
+}
+.bow.one{left:44px;top:50px}
+.bow.two{right:44px;top:86px;transform:scale(.86)}
+.bow.three{left:90px;bottom:52px;transform:scale(1.08)}
+.bow.four{right:82px;bottom:42px;transform:scale(.72)}
+
+
+@media (max-width:700px){
+  #desktop{
+    grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+  }
+  .desktop-note{
+    display:none !important;
+  }
+}
+@media (max-width:430px){
+  #desktop{
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -854,39 +1005,73 @@ body{
     <strong>little note.txt</strong><br>
     click whatever catches your eye.<br>
     some things are meant to be found slowly. ☾
+  
+  <div class="desktop-note" style="left:29%;top:18%;right:auto;bottom:auto;transform:rotate(1.5deg);width:175px;">
+    <strong>little_notes_02.txt</strong><br>
+    some things are hidden in plain sight.<br>
+    you just have to click around a little. ✦
   </div>
 
-  <div class="icon pink" style="left:18px;top:63px" onclick="openWin('home')">
+  <div class="desktop-note" style="left:57%;bottom:11%;right:auto;transform:rotate(-1deg);width:182px;">
+    <strong>little_notes_03.txt</strong><br>
+    not everything here is a letter.<br>
+    some things are only here to look pretty. ♡
+  </div>
+
+  <div class="desktop-note" style="right:14%;top:23%;bottom:auto;transform:rotate(2deg);width:165px;">
+    <strong>little_notes_04.txt</strong><br>
+    take your time.<br>
+    there is no right order. ☾
+  </div>
+
+
+  <div class="icon pink" style="left:3%;top:10%" onclick="openWin('home')">
     <div class="icon-box">♡</div><span>starlit<br>letter</span>
   </div>
 
-  <div class="icon lav" style="left:18px;top:158px" onclick="openWin('m1')">
+  <div class="icon lav" style="left:8%;top:31%" onclick="openWin('m1')">
     <div class="icon-box">୨୧</div><span>01_things<br>i_love.txt</span>
   </div>
 
-  <div class="icon pink" style="left:18px;top:255px" onclick="openWin('m2')">
+  <div class="icon pink" style="left:18%;top:57%" onclick="openWin('m2')">
     <div class="icon-box">♡</div><span>02_moment<br>i_cherish.txt</span>
   </div>
 
-  <div class="icon blue" style="left:18px;top:352px" onclick="openWin('m3')">
+  <div class="icon blue" style="left:6%;top:73%" onclick="openWin('m3')">
     <div class="icon-box">☾</div><span>03_bad<br>days.txt</span>
   </div>
 
-  <div class="icon cream" style="left:125px;top:158px" onclick="openWin('m4')">
+  <div class="icon cream" style="left:29%;top:37%" onclick="openWin('m4')">
     <div class="icon-box">✦</div><span>04_with<br>you.txt</span>
   </div>
 
-  <div class="icon green" style="left:125px;top:255px" onclick="openWin('m5')">
+  <div class="icon green" style="left:40%;top:64%" onclick="openWin('m5')">
     <div class="icon-box">✧</div><span>05_little<br>things.txt</span>
   </div>
 
-  <div class="icon pink" style="left:125px;top:352px" onclick="openWin('m6')">
+  <div class="icon pink" style="left:56%;top:49%" onclick="openWin('m6')">
     <div class="icon-box">♡</div><span>06_one<br>last_thing.txt</span>
   </div>
 
-  <div class="icon lav" style="right:28px;top:64px" onclick="openWin('secret')">
+  <div class="icon lav" style="right:6%;top:14%" onclick="openWin('secret')">
     <div class="icon-box">?</div><span>secret.exe</span>
+  
+  <div class="icon blue" style="left:47%;top:18%" onclick="openWin('img1')">
+    <div class="icon-box">☾</div><span>moon_view<br>.bmp</span>
   </div>
+
+  <div class="icon cream" style="left:66%;top:34%" onclick="openWin('img2')">
+    <div class="icon-box">✦</div><span>pink_sky<br>.jpg</span>
+  </div>
+
+  <div class="icon green" style="left:76%;top:61%" onclick="openWin('img3')">
+    <div class="icon-box">♡</div><span>soft_corner<br>.gif</span>
+  </div>
+
+  <div class="icon pink" style="left:70%;top:80%" onclick="openWin('img4')">
+    <div class="icon-box">୨୧</div><span>little_bows<br>.png</span>
+  </div>
+
 
   <section class="window" id="home" style="left:50%;top:50%;transform:translate(-50%,-50%);width:min(570px,calc(100vw - 30px))">
     <div class="titlebar"><div class="title">♡ ST★RLIT_LETTER.EXE</div><div class="controls"><button class="wbtn" onclick="minWin('home')">_</button><button class="wbtn" onclick="closeWin('home')">×</button></div></div>
@@ -1029,6 +1214,59 @@ body{
     </div>
     <div class="status">SECRET.EXE &nbsp;|&nbsp; access level: personal</div>
   </section>
+
+  <section class="window art-window" id="img1" style="left:45%;top:17%;width:min(390px,calc(100vw - 30px))">
+    <div class="titlebar blue"><div class="title">moon_view.bmp</div><div class="controls"><button class="wbtn" onclick="minWin('img1')">_</button><button class="wbtn" onclick="closeWin('img1')">×</button></div></div>
+    <div class="menu"><span>File</span><span>View</span><span>Image</span></div>
+    <div class="body"><div class="panel">
+      <div class="art-title">moon view</div>
+      <div class="art-card moon-scene"></div>
+      <div class="art-caption">just a little pretty thing to open while you look around. ☾</div>
+    </div></div>
+    <div class="status">preview image loaded</div>
+  </section>
+
+  <section class="window art-window" id="img2" style="left:60%;top:30%;width:min(390px,calc(100vw - 30px))">
+    <div class="titlebar"><div class="title">pink_sky.jpg</div><div class="controls"><button class="wbtn" onclick="minWin('img2')">_</button><button class="wbtn" onclick="closeWin('img2')">×</button></div></div>
+    <div class="menu"><span>File</span><span>View</span><span>Image</span></div>
+    <div class="body"><div class="panel">
+      <div class="art-title">pink sky</div>
+      <div class="art-card sky-scene"></div>
+      <div class="art-caption">soft colors, tiny clouds, and a little extra atmosphere.</div>
+    </div></div>
+    <div class="status">preview image loaded</div>
+  </section>
+
+  <section class="window art-window" id="img3" style="left:64%;top:53%;width:min(390px,calc(100vw - 30px))">
+    <div class="titlebar green"><div class="title">soft_corner.gif</div><div class="controls"><button class="wbtn" onclick="minWin('img3')">_</button><button class="wbtn" onclick="closeWin('img3')">×</button></div></div>
+    <div class="menu"><span>File</span><span>View</span><span>Image</span></div>
+    <div class="body"><div class="panel">
+      <div class="art-title">soft corner</div>
+      <div class="art-card soft-scene">
+        <div class="bed"></div>
+        <div class="lamp"></div>
+      </div>
+      <div class="art-caption">a tiny cozy corner, just because it felt right to add one.</div>
+    </div></div>
+    <div class="status">preview image loaded</div>
+  </section>
+
+  <section class="window art-window" id="img4" style="left:54%;top:63%;width:min(390px,calc(100vw - 30px))">
+    <div class="titlebar lav"><div class="title">little_bows.png</div><div class="controls"><button class="wbtn" onclick="minWin('img4')">_</button><button class="wbtn" onclick="closeWin('img4')">×</button></div></div>
+    <div class="menu"><span>File</span><span>View</span><span>Image</span></div>
+    <div class="body"><div class="panel">
+      <div class="art-title">little bows</div>
+      <div class="art-card bow-scene">
+        <div class="bow one"><i></i></div>
+        <div class="bow two"><i></i></div>
+        <div class="bow three"><i></i></div>
+        <div class="bow four"><i></i></div>
+      </div>
+      <div class="art-caption">a few cute little things, scattered around like the rest. ୨୧</div>
+    </div></div>
+    <div class="status">preview image loaded</div>
+  </section>
+
 </div>
 
 <div id="taskbar">
@@ -1048,7 +1286,7 @@ body{
 const names={
   home:"♡ ST★RLIT_LETTER.EXE",m1:"01_things_i_love.txt",m2:"02_moment_i_cherish.txt",
   m3:"03_bad_days.txt",m4:"04_with_you.txt",m5:"05_little_things.txt",m6:"06_one_last_thing.txt",
-  secret:"SECRET.EXE"
+  secret:"SECRET.EXE", img1:"moon_view.bmp", img2:"pink_sky.jpg", img3:"soft_corner.gif", img4:"little_bows.png"
 };
 let z=20,drag=null,holding=false,holdRAF=null,holdStarted=0;
 
