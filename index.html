@@ -2,233 +2,422 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>starlit-letter.exe</title>
 <style>
 :root{
-  --desktop:#d7b9c7;
-  --desktop2:#ead6df;
-  --window:#f2dbe3;
-  --paper:#fff4f7;
-  --pink:#ef9fbd;
-  --pink-dark:#8f4e6d;
-  --pink-light:#ffd8e8;
-  --lav:#cab6db;
-  --lav-dark:#6d5b7b;
-  --blue:#b7d2da;
-  --green:#c8dfcf;
-  --cream:#f8eadf;
-  --ink:#473b45;
-  --bevel-light:#fff9fc;
-  --bevel-mid:#d7bec8;
-  --bevel-dark:#8a737d;
+  --desk:#d9d1c0;
+  --desk2:#c8c0af;
+  --window:#f6e8df;
+  --paper:#fff9ef;
+  --pink:#e7a3bb;
+  --pinkD:#96506b;
+  --pinkL:#ffd9e4;
+  --lav:#c9b8da;
+  --lavD:#705b7d;
+  --blue:#bad5dd;
+  --blueD:#668c96;
+  --green:#c9dfcf;
+  --greenD:#587060;
+  --cream:#f5ecd8;
+  --ink:#4c4049;
+  --retro:"Courier New","Lucida Console",monospace;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden}
 body{
-  font-family:"MS Sans Serif","Microsoft Sans Serif",Tahoma,sans-serif;
+  font-family:var(--retro);
   color:var(--ink);
   background:
-    radial-gradient(ellipse at 8% 10%,rgba(255,255,255,.86) 0 6%,transparent 7%),
-    radial-gradient(ellipse at 14% 9%,rgba(255,255,255,.72) 0 8%,transparent 9%),
-    radial-gradient(ellipse at 21% 11%,rgba(255,255,255,.56) 0 6%,transparent 7%),
-    radial-gradient(ellipse at 73% 14%,rgba(255,255,255,.66) 0 7%,transparent 8%),
-    radial-gradient(ellipse at 81% 12%,rgba(255,255,255,.84) 0 8%,transparent 9%),
-    radial-gradient(ellipse at 88% 15%,rgba(255,255,255,.58) 0 6%,transparent 7%),
-    radial-gradient(ellipse at 34% 68%,rgba(255,255,255,.42) 0 7%,transparent 8%),
-    radial-gradient(ellipse at 42% 66%,rgba(255,255,255,.58) 0 9%,transparent 10%),
-    linear-gradient(180deg,#e9c8d5 0%,#dfbdcb 45%,#cbb7c7 100%);
-  image-rendering:pixelated;
+    radial-gradient(ellipse at 14% 12%,rgba(255,255,255,.70) 0 7%,transparent 8%),
+    radial-gradient(ellipse at 22% 9%,rgba(255,255,255,.48) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 82% 17%,rgba(255,255,255,.42) 0 9%,transparent 10%),
+    radial-gradient(ellipse at 70% 74%,rgba(255,255,255,.22) 0 10%,transparent 11%),
+    linear-gradient(135deg,var(--desk),var(--desk2));
 }
 body:after{
   content:"";
-  position:fixed;inset:0;pointer-events:none;opacity:.16;
-  background:
-    repeating-linear-gradient(0deg,rgba(255,255,255,.16) 0 1px,rgba(88,55,70,.08) 1px 2px),
-    radial-gradient(rgba(74,48,61,.35) .45px,transparent .45px);
-  background-size:auto,4px 4px;
-  mix-blend-mode:soft-light;
+  position:fixed; inset:0; pointer-events:none; opacity:.12;
+  background-image:radial-gradient(rgba(80,60,65,.45) .45px,transparent .45px);
+  background-size:4px 4px;
 }
 #desktop{position:fixed;inset:0 0 35px;overflow:hidden}
+
 .retro-label{
   position:absolute;top:8px;left:10px;z-index:2;
-  padding:4px 9px;background:#f0a4bf;color:#fff;
-  font-weight:bold;font-size:11px;letter-spacing:.4px;
-  border-top:2px solid var(--bevel-light);border-left:2px solid var(--bevel-light);
-  border-right:2px solid var(--bevel-dark);border-bottom:2px solid var(--bevel-dark);
-  box-shadow:2px 2px 0 rgba(70,50,60,.28)
+  padding:4px 9px;background:var(--pink);color:#fff;
+  font-weight:bold;font-size:11px;letter-spacing:.5px;
+  border:2px outset #ffd4df;box-shadow:2px 2px 0 rgba(70,50,60,.25)
 }
+
+.doodle{position:absolute;z-index:1;color:rgba(255,255,255,.78);text-shadow:1px 1px rgba(80,60,65,.18);user-select:none;pointer-events:none}
+.d1{left:31%;top:8%;font-size:24px}.d2{right:9%;top:11%;font-size:31px}.d3{left:43%;bottom:14%;font-size:23px}
+.d4{right:24%;bottom:20%;font-size:18px}.d5{left:18%;bottom:10%;font-size:20px}
+.desktop-note{
+  position:absolute;right:6%;bottom:10%;width:190px;min-height:88px;
+  padding:12px 12px 10px;background:#fff2cfae;border:2px outset #fff4d8;
+  box-shadow:3px 3px 0 rgba(80,65,55,.20);transform:rotate(-2deg);z-index:2;
+  font-size:11px;line-height:1.55;color:#6c5961
+}
+.desktop-note strong{color:var(--pinkD);font-size:12px}
+
 .icon{
-  position:absolute;width:88px;text-align:center;padding:5px;
+  position:absolute;width:96px;text-align:center;padding:5px;
   cursor:pointer;user-select:none;border:1px dotted transparent;z-index:3
 }
-.icon:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+.icon:hover{border-color:#fff;background:rgba(255,255,255,.13)}
 .icon-box{
-  width:42px;height:42px;margin:auto auto 4px;display:flex;
-  align-items:center;justify-content:center;font-size:25px;
-  background:#f9e7ed;
-  border-top:2px solid var(--bevel-light);border-left:2px solid var(--bevel-light);
-  border-right:2px solid var(--bevel-dark);border-bottom:2px solid var(--bevel-dark);
-  box-shadow:2px 2px 0 #806d76
+  width:44px;height:44px;margin:auto auto 5px;display:flex;
+  align-items:center;justify-content:center;font-size:24px;
+  background:#fff8ef;border:2px outset #fff;box-shadow:2px 2px 0 #817874
 }
-.icon span{font-size:11px;line-height:13px;color:#fff;text-shadow:1px 1px #625b58}
+.icon.pink .icon-box{background:#f8e6ed}
+.icon.lav .icon-box{background:#eee7f5}
+.icon.blue .icon-box{background:#e7f1f3}
+.icon.cream .icon-box{background:#f8efd9}
+.icon.green .icon-box{background:#e7efe8}
+.icon span{font-size:10px;line-height:12px;color:#fff;text-shadow:1px 1px #625b58}
+
 .window{
-  position:absolute;width:min(600px,calc(100vw - 30px));
-  max-height:calc(100vh - 52px);display:none;
-  background:var(--window);
-  border-top:2px solid var(--bevel-light);border-left:2px solid var(--bevel-light);
-  border-right:2px solid var(--bevel-dark);border-bottom:2px solid var(--bevel-dark);
-  box-shadow:4px 4px 0 rgba(67,47,57,.48);z-index:10
+  position:absolute;width:min(580px,calc(100vw - 30px));
+  max-height:calc(100vh - 52px);display:none;background:var(--window);
+  border:2px outset #fff;box-shadow:3px 3px 0 rgba(60,45,50,.42);z-index:10
 }
-.window.open{display:block;animation:winOpen .15s ease-out}
+.window.open{display:block;animation:winOpen .14s ease-out}
 @keyframes winOpen{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 .titlebar{
   height:25px;padding:2px 3px 2px 6px;color:#fff;font-size:12px;font-weight:bold;
   display:flex;align-items:center;cursor:move;user-select:none;
-  background:linear-gradient(90deg,#8a4d6a 0%,#cf7fa1 55%,#eca7c0 100%)
+  background:linear-gradient(90deg,var(--pinkD),var(--pink))
 }
-.titlebar.lav{background:linear-gradient(90deg,#665476,#9b82ae 58%,#ccb8dc)}
-.titlebar.blue{background:linear-gradient(90deg,#5f7f8a,#8eb5c0 58%,#bdd5dd)}
-.titlebar.green{background:linear-gradient(90deg,#55705e,#83a98f 58%,#c9dfcf)}
+.titlebar.lav{background:linear-gradient(90deg,var(--lavD),var(--lav))}
+.titlebar.blue{background:linear-gradient(90deg,var(--blueD),var(--blue))}
+.titlebar.green{background:linear-gradient(90deg,var(--greenD),var(--green))}
 .title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .controls{display:flex;gap:2px}
 .wbtn{
   width:18px;height:18px;padding:0;background:#eaded7;color:var(--ink);
-  border:2px outset #fff;font-weight:bold;cursor:pointer
+  border:2px outset #fff;font-family:var(--retro);font-weight:bold;cursor:pointer
 }
 .wbtn:active{border-style:inset}
 .menu{
   height:23px;display:flex;align-items:center;gap:18px;padding:0 8px;
-  background:#efdfe5;border-bottom:1px solid #b996a5;font-size:11px
+  background:#f4e8df;border-bottom:1px solid #c5b6ae;font-size:10px
 }
-.body{padding:12px;overflow:auto;max-height:calc(100vh - 99px)}
-.status{
-  height:21px;padding:3px 7px;font-size:10px;
-  background:#eee2d9;border-top:2px groove #fff
+.body{padding:12px;overflow:auto;max-height:calc(100vh - 100px)}
+.status{height:21px;padding:3px 7px;font-size:9px;background:#eee2d9;border-top:2px groove #fff}
+.panel{background:var(--paper);border:2px inset #fff;padding:15px}
+.heading{text-align:center;color:var(--pinkD);font-size:18px;font-weight:bold;text-shadow:1px 1px #fff;margin:0 0 10px}
+.message{
+  background:#fffaf0;border:1px dashed #c38da1;padding:14px;
+  font-size:11px;line-height:1.72;white-space:normal
 }
-.hero{
-  min-height:325px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;position:relative;overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 17%,rgba(255,255,255,.88),transparent 34%),
-    radial-gradient(ellipse at 18% 23%,rgba(255,255,255,.56) 0 10%,transparent 11%),
-    radial-gradient(ellipse at 77% 67%,rgba(255,255,255,.38) 0 12%,transparent 13%),
-    linear-gradient(145deg,#fbe5ed,#eed8e8 52%,#e4d3df);
-  border-top:2px solid #9a8390;border-left:2px solid #9a8390;
-  border-right:2px solid #fff;border-bottom:2px solid #fff
-}
-.hero h1{
-  margin:4px 0;color:var(--pink-dark);font-size:29px;letter-spacing:2px;
-  text-shadow:2px 2px #fff
-}
-.kicker{font-size:11px;color:#756b72}.symbol{font-size:24px;color:var(--lav-dark)}
-.small{font-size:11px;line-height:1.6}.center{text-align:center}
-.star{position:absolute;color:#fff;animation:twinkle 1.8s infinite alternate}
-@keyframes twinkle{from{opacity:.2;transform:scale(.75)}to{opacity:1;transform:scale(1.15)}}
+.message p{margin:0 0 10px}
+.message p:last-child{margin-bottom:0}
+.symbol{color:var(--lavD);font-size:20px;text-align:center;margin:7px 0}
+.small{font-size:10px;line-height:1.65}
+.center{text-align:center}
 .btn{
-  display:inline-block;margin:5px;padding:8px 16px;background:#ead8d2;color:var(--pink-dark);
-  font:700 12px "MS Sans Serif",Tahoma,sans-serif;border:2px outset #fff;cursor:pointer
+  display:inline-block;margin:6px;padding:8px 16px;background:#ead8d2;color:var(--pinkD);
+  font:700 11px var(--retro);border:2px outset #fff;cursor:pointer
 }
 .btn:active{border-style:inset}
-.panel{background:var(--paper);border:2px inset #fff;padding:13px}
-.heading{
-  text-align:center;color:var(--pink-dark);font-size:19px;
-  text-shadow:1px 1px #fff;margin:2px 0 5px
+
+.hero{
+  min-height:330px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 50% 20%,rgba(255,255,255,.8),transparent 35%),
+             linear-gradient(145deg,#f9e7e9,#eee0ed 55%,#e7ddd5);
+  border:2px inset #fff
 }
-.sub{text-align:center;font-size:11px;margin:0 0 12px;color:#756b72}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.card{
-  min-height:118px;padding:10px;text-align:center;cursor:pointer;
-  border-top:2px solid #fff;border-left:2px solid #fff;
-  border-right:2px solid #9b828d;border-bottom:2px solid #9b828d;
-  background:#f8e1ea;transition:transform .12s
-}
-.card:nth-child(2){background:#eadff2}
-.card:nth-child(3){background:#dfecef}
-.card:nth-child(4){background:#f4e5de}
-.card:nth-child(5){background:#e3ece5}
-.card:nth-child(6){background:#efdeea}
-.card:hover{transform:translateY(-2px)}
-.sym{font-size:21px;display:block;margin-bottom:5px}
-.ctitle{font-weight:bold;font-size:11px}
-.content{display:none;text-align:left;font-size:11px;line-height:1.58;margin-top:6px}
-.card.open .content{display:block}.card.open .ctitle{display:none}
-.message{
-  background:#fff5f7;border:1px dashed #bf879d;padding:12px;margin:9px 0;
-  font-size:12px;line-height:1.72
-}
-.message h3{font-size:12px;color:var(--pink-dark);margin:0 0 7px}
-.terminal{
-  background:#231f27;color:#e5d6ea;border:2px inset #fff;padding:12px;
-  font:12px/1.7 "Courier New",monospace
-}
+.hero h1{margin:5px 0;color:var(--pinkD);font-size:28px;letter-spacing:2px;text-shadow:2px 2px #fff}
+.kicker{font-size:11px;color:#756b72;letter-spacing:.6px}
+.star{position:absolute;color:#fff;animation:twinkle 1.8s infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.75)}to{opacity:1;transform:scale(1.15)}}
+
+.terminal{background:#28252c;color:#dacde0;border:2px inset #fff;padding:12px;font:11px/1.7 var(--retro)}
 .cursor{display:inline-block;width:7px;height:13px;background:#dacde0;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.locked{text-align:center;padding:14px}
-.lockicon{font-size:39px;color:var(--pink-dark)}
+.locked{text-align:center;padding:14px}.lockicon{font-size:38px;color:var(--pinkD)}
 .progress{height:14px;background:#d9d0cb;border:2px inset #fff;margin:10px 0;overflow:hidden}
 .fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .08s}
-#final{display:none}
-#final.show{display:block;animation:fade .5s}
+#final{display:none}#final.show{display:block;animation:fade .5s}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 #typed{white-space:pre-line;text-align:left}
+
 #taskbar{
-  position:fixed;left:0;right:0;bottom:0;height:35px;background:#d9c4cc;
-  border-top:2px solid #fff3f8;box-shadow:inset 0 1px #af939e;
-  display:flex;align-items:center;padding:3px;z-index:9999
+  position:fixed;left:0;right:0;bottom:0;height:35px;background:#d8d0c7;
+  border-top:2px solid #fff;display:flex;align-items:center;padding:3px;z-index:9999
 }
 .start{
-  height:27px;min-width:77px;background:#edd8e0;
-  border-top:2px solid #fff;border-left:2px solid #fff;
-  border-right:2px solid #8f7781;border-bottom:2px solid #8f7781;
-  font-weight:bold;cursor:pointer
+  height:27px;min-width:77px;background:#e7ded6;border:2px outset #fff;
+  font:700 11px var(--retro);cursor:pointer
 }
 .tasks{display:flex;gap:3px;flex:1;margin-left:5px}
 .task{
-  height:25px;min-width:125px;max-width:180px;text-align:left;background:#e4d2d9;
-  border-top:2px solid #917a84;border-left:2px solid #917a84;
-  border-right:2px solid #fff;border-bottom:2px solid #fff;padding:2px 7px;font-size:11px;cursor:pointer;
+  height:25px;min-width:115px;max-width:180px;text-align:left;background:#ddd5cd;
+  border:2px inset #fff;padding:2px 7px;font:10px var(--retro);cursor:pointer;
   overflow:hidden;white-space:nowrap;text-overflow:ellipsis
 }
-.clock{
-  height:26px;min-width:70px;padding:5px;text-align:center;
-  background:#e3d1d8;border-top:2px solid #917a84;border-left:2px solid #917a84;
-  border-right:2px solid #fff;border-bottom:2px solid #fff;font-size:11px
-}
+.clock{height:26px;min-width:70px;padding:5px;text-align:center;background:#ded6ce;border:2px inset #fff;font-size:10px}
 #startMenu{
-  position:fixed;left:4px;bottom:35px;width:220px;background:#e6d2da;
-  border-top:2px solid #fff;border-left:2px solid #fff;
-  border-right:2px solid #8f7882;border-bottom:2px solid #8f7882;
-  box-shadow:3px 3px #75616b;z-index:10000;display:none
+  position:fixed;left:4px;bottom:35px;width:205px;background:#e4dbd3;
+  border:2px outset #fff;box-shadow:3px 3px #756b68;z-index:10000;display:none
 }
 #startMenu.open{display:block}
-.startHead{
-  height:48px;background:linear-gradient(90deg,#8a4d6a,#e39ab7);
-  color:#fff;font-weight:bold;display:flex;align-items:flex-end;padding:8px;font-size:12px
-}
-.startItem{padding:9px 12px;font-size:11px;border-bottom:1px solid #c3b7b0;cursor:pointer}
+.startHead{height:46px;background:linear-gradient(90deg,var(--pinkD),var(--pink));color:#fff;font-weight:bold;display:flex;align-items:flex-end;padding:8px;font-size:11px}
+.startItem{padding:9px 12px;font-size:10px;border-bottom:1px solid #c3b7b0;cursor:pointer}
 .startItem:hover{background:var(--pink);color:#fff}
-.particle{
-  position:fixed;pointer-events:none;z-index:10001;
-  animation:float 1.5s forwards;font-size:14px
-}
-@keyframes float{to{opacity:0;transform:translate(var(--x),-100px) scale(1.3)}}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.hero h1{font-size:23px}.task{min-width:80px}}
 
-/* Retro display typography */
-:root{
-  --retro-font:"Courier New","Lucida Console",monospace;
-  --reading-font:"MS Sans Serif","Microsoft Sans Serif",Tahoma,sans-serif;
+.particle{position:fixed;pointer-events:none;z-index:10001;animation:float 1.5s forwards;font-size:14px}
+@keyframes float{to{opacity:0;transform:translate(var(--x),-100px) scale(1.3)}}
+
+@media(max-width:900px){
+  .desktop-note{display:none}
+  .icon{transform:scale(.92)}
 }
-.titlebar,.retro-label,.icon span,.hero h1,.heading,.btn,.start,.startHead,.startItem,.ctitle,.status,.task{
-  font-family:var(--retro-font);
+
+/* =========================================================
+   GLOBAL TYPOGRAPHY — force the same retro/typewriter font
+   ========================================================= */
+html, body, button, input, textarea, select,
+.window, .titlebar, .title, .menu, .body, .status,
+.icon, .icon span, .desktop-note, .retro-label,
+.hero, .hero h1, .kicker, .small, .heading, .message,
+.start, .task, .clock, #startMenu, .startHead, .startItem,
+.terminal, .btn, .panel, .symbol {
+  font-family: var(--retro) !important;
 }
-.hero h1,.heading,.retro-label,.ctitle{
-  font-weight:700;
-  letter-spacing:.7px;
+
+/* =========================================================
+   MOBILE / SMALL SCREEN MODE
+   The same HTML becomes a touch-friendly retro desktop.
+   ========================================================= */
+@media (max-width: 700px) {
+  html, body {
+    overflow: auto;
+    min-height: 100%;
+    background-attachment: fixed;
+  }
+
+  #desktop {
+    position: relative;
+    inset: auto;
+    min-height: calc(100vh - 42px);
+    padding: 54px 12px 110px;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 10px;
+    align-content: start;
+  }
+
+  .retro-label {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 9000;
+  }
+
+  .doodle,
+  .desktop-note {
+    display: none !important;
+  }
+
+  .icon {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    min-height: 88px;
+    padding: 6px 3px;
+    transform: none !important;
+  }
+
+  .icon-box {
+    width: 48px;
+    height: 48px;
+    font-size: 25px;
+  }
+
+  .icon span {
+    font-size: 10px;
+    line-height: 1.25;
+    word-break: break-word;
+  }
+
+  /* Windows become centered "app" panels instead of floating desktop windows */
+  .window,
+  #home.window {
+    position: fixed !important;
+    left: 8px !important;
+    right: 8px !important;
+    top: 54px !important;
+    bottom: 48px !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    z-index: 9500 !important;
+  }
+
+  .window.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .titlebar {
+    flex: 0 0 29px;
+    height: 29px;
+    font-size: 11px;
+    touch-action: none;
+    cursor: default;
+  }
+
+  .menu {
+    flex: 0 0 24px;
+    height: 24px;
+    gap: 13px;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 9px;
+  }
+
+  .body {
+    flex: 1 1 auto;
+    max-height: none !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px;
+  }
+
+  .status {
+    flex: 0 0 23px;
+    height: 23px;
+  }
+
+  .hero {
+    min-height: 100%;
+    padding: 22px 12px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  .kicker {
+    font-size: 9px;
+    line-height: 1.5;
+    max-width: 90%;
+  }
+
+  .panel {
+    padding: 10px;
+  }
+
+  .heading {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .message {
+    font-size: 10px;
+    line-height: 1.65;
+    padding: 11px;
+  }
+
+  .btn {
+    min-height: 38px;
+    padding: 10px 14px;
+    font-size: 10px;
+  }
+
+  .wbtn {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  #taskbar {
+    height: 42px;
+    padding: 4px;
+  }
+
+  .start {
+    min-width: 72px;
+    height: 32px;
+    font-size: 10px;
+  }
+
+  .tasks {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+
+  .tasks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .task {
+    min-width: 100px;
+    max-width: 125px;
+    height: 31px;
+    flex: 0 0 auto;
+    font-size: 9px;
+  }
+
+  .clock {
+    min-width: 58px;
+    height: 31px;
+    font-size: 9px;
+    padding: 7px 4px 0;
+  }
+
+  #startMenu {
+    bottom: 42px;
+    left: 4px;
+    width: min(230px, calc(100vw - 8px));
+  }
+
+  .terminal {
+    font-size: 9px;
+    overflow-x: auto;
+  }
+
+  .progress {
+    height: 18px;
+  }
 }
-.content,.message,.small,.sub,.body{
-  font-family:var(--reading-font);
+
+/* Slightly tighter on very small phones */
+@media (max-width: 390px) {
+  #desktop {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .icon span {
+    font-size: 9px;
+  }
+
+  .window,
+  #home.window {
+    left: 4px !important;
+    right: 4px !important;
+  }
+
+  .message {
+    font-size: 9px;
+  }
 }
 
 </style>
@@ -237,29 +426,50 @@ body:after{
 
 <div id="desktop">
   <div class="retro-label">RETRO 95 STYLE</div>
-  <div style="position:absolute;right:22px;top:18px;color:#fff;font-size:12px;text-shadow:1px 1px #8a6776;z-index:2">✦ starlit desktop ✦</div>
 
-  <div class="icon" style="left:18px;top:65px" onclick="openWin('home')">
-    <div class="icon-box">▣</div><span>starlit<br>letter</span>
+  <div class="doodle d1">✦</div><div class="doodle d2">☾</div><div class="doodle d3">♡</div>
+  <div class="doodle d4">✧</div><div class="doodle d5">୨୧</div>
+
+  <div class="desktop-note">
+    <strong>little note.txt</strong><br>
+    click whatever catches your eye.<br>
+    some things are meant to be found slowly. ☾
   </div>
-  <div class="icon" style="left:18px;top:160px" onclick="openWin('letters')">
-    <div class="icon-box">✉</div><span>little<br>letters</span>
+
+  <div class="icon pink" style="left:18px;top:63px" onclick="openWin('home')">
+    <div class="icon-box">♡</div><span>starlit<br>letter</span>
   </div>
-  <div class="icon" style="left:18px;top:255px" onclick="openWin('moments')">
-    <div class="icon-box">▤</div><span>moments</span>
+
+  <div class="icon lav" style="left:18px;top:158px" onclick="openWin('m1')">
+    <div class="icon-box">୨୧</div><span>01_things<br>i_love.txt</span>
   </div>
-  <div class="icon" style="left:18px;top:350px" onclick="openWin('secret')">
-    <div class="icon-box">⌘</div><span>secret.exe</span>
+
+  <div class="icon pink" style="left:18px;top:255px" onclick="openWin('m2')">
+    <div class="icon-box">♡</div><span>02_moment<br>i_cherish.txt</span>
+  </div>
+
+  <div class="icon blue" style="left:18px;top:352px" onclick="openWin('m3')">
+    <div class="icon-box">☾</div><span>03_bad<br>days.txt</span>
+  </div>
+
+  <div class="icon cream" style="left:125px;top:158px" onclick="openWin('m4')">
+    <div class="icon-box">✦</div><span>04_with<br>you.txt</span>
+  </div>
+
+  <div class="icon green" style="left:125px;top:255px" onclick="openWin('m5')">
+    <div class="icon-box">✧</div><span>05_little<br>things.txt</span>
+  </div>
+
+  <div class="icon pink" style="left:125px;top:352px" onclick="openWin('m6')">
+    <div class="icon-box">♡</div><span>06_one<br>last_thing.txt</span>
+  </div>
+
+  <div class="icon lav" style="right:28px;top:64px" onclick="openWin('secret')">
+    <div class="icon-box">?</div><span>secret.exe</span>
   </div>
 
   <section class="window" id="home" style="left:50%;top:50%;transform:translate(-50%,-50%);width:min(570px,calc(100vw - 30px))">
-    <div class="titlebar">
-      <div class="title">♡ ST★RLIT_LETTER.EXE</div>
-      <div class="controls">
-        <button class="wbtn" onclick="minWin('home')">_</button>
-        <button class="wbtn" onclick="closeWin('home')">×</button>
-      </div>
-    </div>
+    <div class="titlebar"><div class="title">♡ ST★RLIT_LETTER.EXE</div><div class="controls"><button class="wbtn" onclick="minWin('home')">_</button><button class="wbtn" onclick="closeWin('home')">×</button></div></div>
     <div class="menu"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
     <div class="body">
       <div class="hero">
@@ -267,154 +477,113 @@ body:after{
         <span class="star" style="right:18%;top:24%;animation-delay:.5s">✧</span>
         <span class="star" style="left:25%;bottom:17%;animation-delay:.9s">♡</span>
         <span class="star" style="right:26%;bottom:20%;animation-delay:.2s">✦</span>
-        <div class="kicker">a little something, made just for you</div>
+        <div class="kicker">A LITTLE SOMETHING MADE JUST FOR YOU</div>
         <h1>starlit letter</h1>
         <div class="symbol">☾ ୨୧ ✦</div>
-        <p class="small">I left a few little things here.<br>Open them slowly. There is no rush.</p>
-        <button class="btn" onclick="openWin('letters');spark(event)">OPEN LETTERS</button>
+        <p class="small">I left six little letters on this desktop.<br>Open them in any order you want.</p>
+        <button class="btn" onclick="closeWin('home')">LET ME LOOK AROUND</button>
       </div>
     </div>
-    <div class="status">Ready &nbsp;|&nbsp; 6 little letters waiting</div>
+    <div class="status">Ready &nbsp;|&nbsp; 6 letters waiting on the desktop</div>
   </section>
 
-  <section class="window" id="letters" style="left:30%;top:10%;width:min(650px,calc(100vw - 30px))">
-    <div class="titlebar lav">
-      <div class="title">little_letters.txt</div>
-      <div class="controls">
-        <button class="wbtn" onclick="minWin('letters')">_</button>
-        <button class="wbtn" onclick="closeWin('letters')">×</button>
-      </div>
-    </div>
-    <div class="menu"><span>File</span><span>Open</span><span>Options</span></div>
-    <div class="body">
-      <div class="panel">
-        <div class="heading">little letters ♡</div>
-        <p class="sub">Click each little window to read it.</p>
-
-        <div class="grid">
-          <div class="card" onclick="reveal(this)">
-            <span class="sym">୨୧</span>
-            <span class="ctitle">01 — Things I love about you</span>
-            <div class="content">
-              Your eyes, your smile, and the way you look at me.<br><br>
-              J’aime ton regard, ton sourire, et cette façon que tu as de faire attention à moi, même dans les plus petites choses.<br><br>
-              You notice things. You care. You make me feel seen without even having to ask.<br><br>
-              Tu fais attention à moi sans que j’aie besoin de le demander, et je crois que c’est une des choses que j’aime le plus chez toi.<br><br>
-              ♡ Even the little things about you have become some of my favorite things.
-            </div>
-          </div>
-
-          <div class="card" onclick="reveal(this)">
-            <span class="sym">♡</span>
-            <span class="ctitle">02 — A moment I cherish</span>
-            <div class="content">
-              The day you met Nana.<br><br>
-              I remember how much I was thinking about that moment beforehand.<br>
-              Je l’appréhendais, parce que Nana est une partie tellement importante de ma vie, et que te voir la rencontrer comptait énormément pour moi.<br><br>
-              And somehow, everything just felt right.<br>
-              Et finalement, tout s’est passé naturellement. Vous avez créé votre petit lien, à votre manière, et voir ça m’a profondément touchée.<br><br>
-              I think I'll always keep that moment somewhere special in my heart.<br>
-              Parce que ce jour-là, ce n’était pas seulement toi qui rencontrais Nana. C’était aussi un petit morceau de nos vies qui commençait à se mélanger. ୨୧
-            </div>
-          </div>
-
-          <div class="card" onclick="reveal(this)">
-            <span class="sym">☾</span>
-            <span class="ctitle">03 — When I'm having a bad day</span>
-            <div class="content">
-              When the day feels a little too heavy, I know I can come to you.<br><br>
-              I know you'll listen. I know you'll make me laugh when I need it most, and somehow find a way to make me smile again.<br>
-              Je sais que tu trouveras toujours les bons mots, ou parfois simplement ta façon d’être, pour rendre les choses un peu plus légères.<br><br>
-              You are so gentle with me on the days when I'm not at my best.<br>
-              Tu sais me réconforter sans jamais me faire sentir que je suis “trop”, et cette douceur-là compte plus que tu ne le sais.<br><br>
-              ♡ Somehow, even my worst days feel a little less lonely when I have you.
-            </div>
-          </div>
-
-          <div class="card" onclick="reveal(this)">
-            <span class="sym">✦</span>
-            <span class="ctitle">04 — Things I want with you</span>
-            <div class="content">
-              Honestly? I don't need anything extraordinary.<br><br>
-              I just want to live our little life together.<br>
-              Je veux simplement vivre notre vie tranquillement, avec toi, Zorro and Nana.<br><br>
-              A little home. Quiet evenings. Random laughs. Silly conversations.<br>
-              Les petites habitudes, les journées ordinaires, les moments où il ne se passe absolument rien… mais où je suis heureuse simplement parce que tu es là.<br><br>
-              I think that's what I want most:<br>
-              a life that feels like home because you're in it.<br><br>
-              ♡ Just you, me, Zoro, Nana — and all the little moments in between.
-            </div>
-          </div>
-
-          <div class="card" onclick="reveal(this)">
-            <span class="sym">✧</span>
-            <span class="ctitle">05 — The little things</span>
-            <div class="content">
-              Maybe love isn't always found in the big moments.<br><br>
-              Maybe it's in the tiny things we don't even think about.<br>
-              Dans les regards échangés sans raison, les rires pour des choses complètement idiotes, les petites habitudes qui deviennent les nôtres.<br><br>
-              It's in feeling comfortable enough to be completely myself,<br>
-              and knowing that I can be silly, quiet, messy, soft, or simply me.<br><br>
-              ♡ I think my favorite kind of love is the one that quietly becomes home.
-            </div>
-          </div>
-
-          <div class="card" onclick="reveal(this)">
-            <span class="sym">♡</span>
-            <span class="ctitle">06 — One last thing</span>
-            <div class="content">
-              Tu as vraiment une place à part pour moi.<br><br>
-              Thank you for being there, especially on my hardest days.<br>
-              Thank you for listening to me, for making me laugh when I need it, for being gentle with me, and for caring about the little things.<br><br>
-              I love our little moments, our laughs, our stupid conversations, and all the quiet moments in between. I love that I can simply be myself with you, without having to pretend to be anything else.<br><br>
-              Je crois que ce que j'aime le plus, c'est tout ce qu'on construit sans même forcément s'en rendre compte. Les souvenirs, les habitudes, les petits moments qui paraissent insignifiants sur le coup, mais qui finissent par devenir précieux.<br><br>
-              You have become such a beautiful part of my life, and I'm so grateful for every little piece of it that I get to share with you.<br><br>
-              I don't know what every tomorrow will look like, but I know that I want to keep discovering them with you.<br><br>
-              ୨୧ So, if you ever wonder how much you mean to me...<br><br>
-              More than these little words could ever explain.<br>
-              A little more than yesterday, and probably a little less than tomorrow. ♡<br><br>
-              — with all my love, always.
-            </div>
-          </div>
-        </div>
-
-        <div class="center" style="margin-top:10px">
-          <button class="btn" onclick="openWin('moments')">NEXT →</button>
-        </div>
-      </div>
-    </div>
-    <div class="status">6 letters &nbsp;|&nbsp; click to reveal</div>
-  </section>
-
-  <section class="window" id="moments" style="left:18%;top:18%;width:min(540px,calc(100vw - 30px))">
-    <div class="titlebar blue">
-      <div class="title">little_moments.txt</div>
-      <div class="controls">
-        <button class="wbtn" onclick="minWin('moments')">_</button>
-        <button class="wbtn" onclick="closeWin('moments')">×</button>
-      </div>
-    </div>
+  <section class="window" id="m1" style="left:29%;top:11%">
+    <div class="titlebar lav"><div class="title">01_things_i_love_about_you.txt</div><div class="controls"><button class="wbtn" onclick="minWin('m1')">_</button><button class="wbtn" onclick="closeWin('m1')">×</button></div></div>
     <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
-    <div class="body">
-      <div class="panel">
-        <div class="heading">little moments ☾</div>
-        <div class="message"><h3>01 — the little things</h3>Les regards, les rires, les habitudes et tous les petits détails qui finissent par devenir précieux.</div>
-        <div class="message"><h3>02 — home</h3>A little life together. Quiet evenings. Ordinary days. Nothing extraordinary — just something that feels like us.</div>
-        <div class="message"><h3>03 — still writing</h3>Il reste encore plein de pages à remplir, et c’est peut-être ça que j’aime le plus.</div>
-        <div class="center"><button class="btn" onclick="openWin('secret')">there is one more...</button></div>
+    <div class="body"><div class="panel">
+      <div class="heading">01 — Things I love about you ♡</div>
+      <div class="message">
+        <p>୨୧ Your eyes, your smile, and the way you look at me.<br>J’aime ton regard, ton sourire, et cette façon que tu as de faire attention à moi, même dans les plus petites choses.</p>
+        <p>You notice things. You care. You make me feel seen without even having to ask.<br>Tu fais attention à moi sans que j’aie besoin de le demander, et je crois que c’est une des choses que j’aime le plus chez toi.</p>
+        <p>♡ Even the little things about you have become some of my favorite things.</p>
       </div>
-    </div>
-    <div class="status">3 moments loaded</div>
+    </div></div>
+    <div class="status">1 letter opened</div>
   </section>
 
-  <section class="window" id="secret" style="left:53%;top:25%;width:min(490px,calc(100vw - 30px))">
-    <div class="titlebar green">
-      <div class="title">SECRET.EXE</div>
-      <div class="controls">
-        <button class="wbtn" onclick="minWin('secret')">_</button>
-        <button class="wbtn" onclick="closeWin('secret')">×</button>
+  <section class="window" id="m2" style="left:34%;top:13%">
+    <div class="titlebar"><div class="title">02_a_moment_i_cherish.txt</div><div class="controls"><button class="wbtn" onclick="minWin('m2')">_</button><button class="wbtn" onclick="closeWin('m2')">×</button></div></div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
+    <div class="body"><div class="panel">
+      <div class="heading">02 — A moment I cherish ♡</div>
+      <div class="message">
+        <p>୨୧ The day you met Nana.</p>
+        <p>I remember how much I was thinking about that moment beforehand.<br>Je l’appréhendais, parce que Nana est une partie tellement importante de ma vie, et que te voir la rencontrer comptait énormément pour moi.</p>
+        <p>And somehow, everything just felt right.<br>Et finalement, tout s’est passé naturellement. Vous avez créé votre petit lien, à votre manière, et voir ça m’a profondément touchée.</p>
+        <p>I think I'll always keep that moment somewhere special in my heart.<br>Parce que ce jour-là, ce n’était pas seulement toi qui rencontrais Nana. C’était aussi un petit morceau de nos vies qui commençait à se mélanger. ୨୧</p>
       </div>
-    </div>
+    </div></div>
+    <div class="status">a favorite memory.txt</div>
+  </section>
+
+  <section class="window" id="m3" style="left:27%;top:16%">
+    <div class="titlebar blue"><div class="title">03_when_im_having_a_bad_day.txt</div><div class="controls"><button class="wbtn" onclick="minWin('m3')">_</button><button class="wbtn" onclick="closeWin('m3')">×</button></div></div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
+    <div class="body"><div class="panel">
+      <div class="heading">03 — When I'm having a bad day ♡</div>
+      <div class="message">
+        <p>୨୧ When the day feels a little too heavy, I know I can come to you.</p>
+        <p>I know you'll listen. I know you'll make me laugh when I need it most, and somehow find a way to make me smile again.<br>Je sais que tu trouveras toujours les bons mots, ou parfois simplement ta façon d’être, pour rendre les choses un peu plus légères.</p>
+        <p>You are so gentle with me on the days when I'm not at my best.<br>Tu sais me réconforter sans jamais me faire sentir que je suis “trop”, et cette douceur-là compte plus que tu ne le sais.</p>
+        <p>♡ Somehow, even my worst days feel a little less lonely when I have you.</p>
+      </div>
+    </div></div>
+    <div class="status">softness detected ♡</div>
+  </section>
+
+  <section class="window" id="m4" style="left:35%;top:10%">
+    <div class="titlebar"><div class="title">04_things_i_want_with_you.txt</div><div class="controls"><button class="wbtn" onclick="minWin('m4')">_</button><button class="wbtn" onclick="closeWin('m4')">×</button></div></div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
+    <div class="body"><div class="panel">
+      <div class="heading">04 — Things I want with you ♡</div>
+      <div class="message">
+        <p>୨୧ Honestly? I don't need anything extraordinary.</p>
+        <p>I just want to live our little life together.<br>Je veux simplement vivre notre vie tranquillement, avec toi, Zorro and Nana.</p>
+        <p>A little home. Quiet evenings. Random laughs. Silly conversations.<br>Les petites habitudes, les journées ordinaires, les moments où il ne se passe absolument rien… mais où je suis heureuse simplement parce que tu es là.</p>
+        <p>I think that's what I want most:<br>a life that feels like home because you're in it.</p>
+        <p>♡ Just you, me, Zoro, Nana — and all the little moments in between.</p>
+      </div>
+    </div></div>
+    <div class="status">future_notes.txt</div>
+  </section>
+
+  <section class="window" id="m5" style="left:30%;top:14%">
+    <div class="titlebar green"><div class="title">05_the_little_things.txt</div><div class="controls"><button class="wbtn" onclick="minWin('m5')">_</button><button class="wbtn" onclick="closeWin('m5')">×</button></div></div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
+    <div class="body"><div class="panel">
+      <div class="heading">05 — The little things ♡</div>
+      <div class="message">
+        <p>୨୧ Maybe love isn't always found in the big moments.</p>
+        <p>Maybe it's in the tiny things we don't even think about.<br>Dans les regards échangés sans raison, les rires pour des choses complètement idiotes, les petites habitudes qui deviennent les nôtres.</p>
+        <p>It's in feeling comfortable enough to be completely myself,<br>and knowing that I can be silly, quiet, messy, soft, or simply me.</p>
+        <p>♡ I think my favorite kind of love is the one that quietly becomes home.</p>
+      </div>
+    </div></div>
+    <div class="status">tiny things, big meaning</div>
+  </section>
+
+  <section class="window" id="m6" style="left:33%;top:8%;width:min(620px,calc(100vw - 30px))">
+    <div class="titlebar lav"><div class="title">06_one_last_thing.txt</div><div class="controls"><button class="wbtn" onclick="minWin('m6')">_</button><button class="wbtn" onclick="closeWin('m6')">×</button></div></div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
+    <div class="body"><div class="panel">
+      <div class="heading">06 — One last thing ♡</div>
+      <div class="message">
+        <p>୨୧ Tu as vraiment une place à part pour moi.</p>
+        <p>Thank you for being there, especially on my hardest days.<br>Thank you for listening to me, for making me laugh when I need it, for being gentle with me, and for caring about the little things.</p>
+        <p>I love our little moments, our laughs, our stupid conversations, and all the quiet moments in between. I love that I can simply be myself with you, without having to pretend to be anything else.</p>
+        <p>Je crois que ce que j'aime le plus, c'est tout ce qu'on construit sans même forcément s'en rendre compte. Les souvenirs, les habitudes, les petits moments qui paraissent insignifiants sur le coup, mais qui finissent par devenir précieux.</p>
+        <p>You have become such a beautiful part of my life, and I'm so grateful for every little piece of it that I get to share with you.</p>
+        <p>I don't know what every tomorrow will look like, but I know that I want to keep discovering them with you.</p>
+        <p>୨୧ So, if you ever wonder how much you mean to me...</p>
+        <p>More than these little words could ever explain.<br>A little more than yesterday, and probably a little less than tomorrow. ♡</p>
+        <p>— with all my love, always.</p>
+      </div>
+    </div></div>
+    <div class="status">last_letter.txt</div>
+  </section>
+
+  <section class="window" id="secret" style="left:52%;top:24%;width:min(490px,calc(100vw - 30px))">
+    <div class="titlebar green"><div class="title">SECRET.EXE</div><div class="controls"><button class="wbtn" onclick="minWin('secret')">_</button><button class="wbtn" onclick="closeWin('secret')">×</button></div></div>
     <div class="menu"><span>Run</span><span>Tools</span><span>Help</span></div>
     <div class="body">
       <div class="terminal">
@@ -422,21 +591,19 @@ body:after{
         > checking access...<br>
         > user recognized: <span style="color:#f4a9bf">YOU</span><br>
         > status: <span style="color:#c9dfcf">READY</span><br><br>
-        > one last thing is waiting...<span class="cursor"></span>
+        > one last little thing is waiting...<span class="cursor"></span>
       </div>
-
       <div class="locked" id="locked">
         <div class="lockicon">♡</div>
         <div class="small">Hold the button until the secret unlocks.</div>
         <div class="progress"><div class="fill" id="fill"></div></div>
         <button class="btn" onmousedown="startHold()" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold()" ontouchend="stopHold()">HOLD ME</button>
       </div>
-
       <div id="final">
-        <div class="panel center">
+        <div class="panel">
           <div class="heading">one last thing...</div>
           <div class="message" id="typed"></div>
-          <div style="color:var(--pink-dark)">☾ ୨୧ ✦</div>
+          <div class="symbol">☾ ୨୧ ✦</div>
         </div>
       </div>
     </div>
@@ -452,186 +619,100 @@ body:after{
 
 <div id="startMenu">
   <div class="startHead">starlit-letter</div>
-  <div class="startItem" onclick="openWin('home');toggleStart()">♡ Home</div>
-  <div class="startItem" onclick="openWin('letters');toggleStart()">✦ Little letters</div>
-  <div class="startItem" onclick="openWin('moments');toggleStart()">☾ Little moments</div>
-  <div class="startItem" onclick="openWin('secret');toggleStart()">? Secret.exe</div>
+  <div class="startItem" onclick="openWin('home');toggleStart()">♡ open starlit-letter</div>
+  <div class="startItem" onclick="openWin('secret');toggleStart()">? run secret.exe</div>
+  <div class="startItem" onclick="toggleStart()">× close menu</div>
 </div>
 
 <script>
 const names={
-  home:"♡ ST★RLIT_LETTER.EXE",
-  letters:"little_letters.txt",
-  moments:"little_moments.txt",
+  home:"♡ ST★RLIT_LETTER.EXE",m1:"01_things_i_love.txt",m2:"02_moment_i_cherish.txt",
+  m3:"03_bad_days.txt",m4:"04_with_you.txt",m5:"05_little_things.txt",m6:"06_one_last_thing.txt",
   secret:"SECRET.EXE"
 };
-
-let z=20, drag=null, holdRAF=null, holding=false, holdStarted=0;
+let z=20,drag=null,holding=false,holdRAF=null,holdStarted=0;
 
 function openWin(id){
   const w=document.getElementById(id);
-  w.classList.add("open");
-  w.style.zIndex=++z;
-  updateTasks();
+  w.classList.add("open"); w.style.zIndex=++z; updateTasks();
+  const r=w.getBoundingClientRect();
+  sparkle({clientX:r.left+40,clientY:r.top+25});
 }
-
-function closeWin(id){
-  document.getElementById(id).classList.remove("open");
-  updateTasks();
-}
-
-function minWin(id){
-  document.getElementById(id).classList.remove("open");
-  updateTasks();
-}
-
+function closeWin(id){document.getElementById(id).classList.remove("open");updateTasks()}
+function minWin(id){document.getElementById(id).classList.remove("open");updateTasks()}
 function updateTasks(){
-  const t=document.getElementById("tasks");
-  t.innerHTML="";
+  const t=document.getElementById("tasks");t.innerHTML="";
   Object.keys(names).forEach(id=>{
     const w=document.getElementById(id);
     if(w.classList.contains("open")){
-      const b=document.createElement("button");
-      b.className="task";
-      b.textContent=names[id];
-      b.onclick=()=>{w.classList.add("open");w.style.zIndex=++z};
-      t.appendChild(b);
+      const b=document.createElement("button");b.className="task";b.textContent=names[id];
+      b.onclick=()=>{w.classList.add("open");w.style.zIndex=++z};t.appendChild(b)
     }
-  });
+  })
 }
-
 document.querySelectorAll(".window").forEach(w=>{
   w.addEventListener("mousedown",()=>w.style.zIndex=++z);
-
   const bar=w.querySelector(".titlebar");
   bar.addEventListener("mousedown",e=>{
+    if(window.innerWidth <= 700) return;
     if(e.target.closest(".controls"))return;
-    const r=w.getBoundingClientRect();
-    drag={w,x:e.clientX-r.left,y:e.clientY-r.top};
-
-    if(w.id==="home"){
-      w.style.left=r.left+"px";
-      w.style.top=r.top+"px";
-      w.style.transform="none";
-    }
-    e.preventDefault();
-  });
+    const r=w.getBoundingClientRect();drag={w,x:e.clientX-r.left,y:e.clientY-r.top};
+    if(w.id==="home"){w.style.left=r.left+"px";w.style.top=r.top+"px";w.style.transform="none"}
+    e.preventDefault()
+  })
 });
-
 document.addEventListener("mousemove",e=>{
+  if(window.innerWidth <= 700) return;
   if(!drag)return;
-  const w=drag.w;
-  const maxX=innerWidth-w.offsetWidth-5;
-  const maxY=innerHeight-35-w.offsetHeight-5;
+  const w=drag.w,maxX=innerWidth-w.offsetWidth-5,maxY=innerHeight-35-w.offsetHeight-5;
   w.style.left=Math.max(5,Math.min(maxX,e.clientX-drag.x))+"px";
   w.style.top=Math.max(5,Math.min(maxY,e.clientY-drag.y))+"px";
 });
-
 document.addEventListener("mouseup",()=>drag=null);
-
-function reveal(card){
-  card.classList.toggle("open");
-  const r=card.getBoundingClientRect();
-  sparkle({clientX:r.left+r.width/2,clientY:r.top+r.height/2});
-}
 
 function sparkle(e){
   const symbols=["♡","✦","✧","୨୧","☾"];
   for(let i=0;i<5;i++){
-    const p=document.createElement("div");
-    p.className="particle";
+    const p=document.createElement("div");p.className="particle";
     p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
     p.style.left=(e.clientX+(Math.random()*30-15))+"px";
     p.style.top=(e.clientY+(Math.random()*20-10))+"px";
     p.style.setProperty("--x",(Math.random()*120-60)+"px");
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),1500);
+    document.body.appendChild(p);setTimeout(()=>p.remove(),1500)
   }
 }
-
 function startHold(){
-  if(holding)return;
-  holding=true;
-  holdStarted=Date.now();
-
+  if(holding)return;holding=true;holdStarted=Date.now();
   function tick(){
     if(!holding)return;
     const pct=Math.min(100,(Date.now()-holdStarted)/1800*100);
     document.getElementById("fill").style.width=pct+"%";
-
-    if(pct>=100){
-      holding=false;
-      unlock();
-      return;
-    }
-    holdRAF=requestAnimationFrame(tick);
+    if(pct>=100){holding=false;unlock();return}
+    holdRAF=requestAnimationFrame(tick)
   }
-  holdRAF=requestAnimationFrame(tick);
+  holdRAF=requestAnimationFrame(tick)
 }
-
 function stopHold(){
-  if(!holding)return;
-  holding=false;
-  cancelAnimationFrame(holdRAF);
-  document.getElementById("fill").style.width="0%";
+  if(!holding)return;holding=false;cancelAnimationFrame(holdRAF);
+  document.getElementById("fill").style.width="0%"
 }
-
 function unlock(){
   document.getElementById("locked").style.display="none";
   document.getElementById("final").classList.add("show");
+  const text=`Just a tiny reminder, in case you ever need one:
 
-  const text=`Tu as vraiment une place à part pour moi.
+you are loved, you are important to me, and I am very, very glad that you are here.
 
-Thank you for being there, especially on my hardest days.
-Thank you for listening to me, for making me laugh when I need it, for being gentle with me, and for caring about the little things.
-
-I love our little moments, our laughs, our stupid conversations, and all the quiet moments in between. I love that I can simply be myself with you, without having to pretend to be anything else.
-
-Je crois que ce que j'aime le plus, c'est tout ce qu'on construit sans même forcément s'en rendre compte. Les souvenirs, les habitudes, les petits moments qui paraissent insignifiants sur le coup, mais qui finissent par devenir précieux.
-
-You have become such a beautiful part of my life, and I'm so grateful for every little piece of it that I get to share with you.
-
-I don't know what every tomorrow will look like, but I know that I want to keep discovering them with you.
-
-୨୧ So, if you ever wonder how much you mean to me...
-
-More than these little words could ever explain.
-A little more than yesterday, and probably a little less than tomorrow. ♡
-
-— with all my love, always.`;
-
-  typeText(document.getElementById("typed"),text,11);
-
-  for(let i=0;i<8;i++){
-    setTimeout(()=>sparkle({
-      clientX:innerWidth/2+(Math.random()*220-110),
-      clientY:innerHeight/2+(Math.random()*140-70)
-    }),i*80);
-  }
+୨୧ with all my love, always.`;
+  typeText(document.getElementById("typed"),text,22);
+  for(let i=0;i<8;i++)setTimeout(()=>sparkle({clientX:innerWidth/2+(Math.random()*220-110),clientY:innerHeight/2+(Math.random()*140-70)}),i*80)
 }
-
 function typeText(el,text,speed){
-  el.textContent="";
-  let i=0;
-  (function next(){
-    if(i<text.length){
-      el.textContent+=text[i++];
-      setTimeout(next,speed);
-    }
-  })();
+  el.textContent="";let i=0;(function next(){if(i<text.length){el.textContent+=text[i++];setTimeout(next,speed)}})()
 }
-
-function toggleStart(){
-  document.getElementById("startMenu").classList.toggle("open");
-}
-
-function updateClock(){
-  document.getElementById("clock").textContent=
-    new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
-}
-updateClock();
-setInterval(updateClock,1000);
-
+function toggleStart(){document.getElementById("startMenu").classList.toggle("open")}
+function updateClock(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}
+updateClock();setInterval(updateClock,1000);
 openWin("home");
 </script>
 </body>
