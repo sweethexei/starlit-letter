@@ -420,14 +420,434 @@ html, body, button, input, textarea, select,
   }
 }
 
+
+/* =========================================================
+   AESTHETIC POLISH — soft retro / starlit-letter
+   ========================================================= */
+
+/* Force the typewriter font absolutely everywhere */
+*, *::before, *::after {
+  font-family: var(--retro) !important;
+}
+
+/* Softer desktop icons: little pastel folders instead of square tiles */
+.icon{
+  border:none !important;
+  border-radius:10px;
+  transition:transform .16s ease, background .16s ease;
+}
+.icon:hover{
+  border:none !important;
+  background:rgba(255,255,255,.10) !important;
+  transform:translateY(-3px);
+}
+.icon-box{
+  position:relative;
+  width:54px !important;
+  height:42px !important;
+  margin:7px auto 8px !important;
+  border:none !important;
+  border-radius:6px 8px 9px 9px !important;
+  box-shadow:
+    0 4px 0 rgba(93,72,82,.20),
+    0 9px 18px rgba(93,72,82,.15) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:22px !important;
+  color:#6d5360;
+  transition:transform .16s ease, filter .16s ease;
+}
+.icon-box::before{
+  content:"";
+  position:absolute;
+  left:6px;
+  top:-7px;
+  width:24px;
+  height:9px;
+  background:inherit;
+  border-radius:6px 6px 0 0;
+  box-shadow:inset 0 1px rgba(255,255,255,.65);
+}
+.icon-box::after{
+  content:"";
+  position:absolute;
+  inset:4px 5px 5px;
+  border-top:1px solid rgba(255,255,255,.68);
+  border-radius:4px;
+  pointer-events:none;
+}
+.icon:hover .icon-box{
+  transform:translateY(-2px) scale(1.04);
+  filter:brightness(1.025);
+}
+.icon.pink .icon-box{background:linear-gradient(180deg,#f8dce7,#e9abc1) !important}
+.icon.lav .icon-box{background:linear-gradient(180deg,#eee4f7,#cbb9dd) !important}
+.icon.blue .icon-box{background:linear-gradient(180deg,#e5f1f4,#b9d6de) !important}
+.icon.cream .icon-box{background:linear-gradient(180deg,#fff4d9,#ead9ac) !important}
+.icon.green .icon-box{background:linear-gradient(180deg,#e8f1e9,#c4dbc9) !important}
+
+.icon span{
+  display:inline-block;
+  padding:3px 6px;
+  border-radius:7px;
+  background:rgba(83,67,74,.13);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  font-size:10px !important;
+  letter-spacing:.1px;
+}
+
+/* More polished windows while keeping the retro chrome */
+.window{
+  border:1px solid rgba(107,82,94,.38) !important;
+  border-radius:9px !important;
+  overflow:hidden;
+  box-shadow:
+    0 18px 45px rgba(67,49,58,.23),
+    0 3px 0 rgba(67,49,58,.18),
+    inset 0 0 0 1px rgba(255,255,255,.48) !important;
+  background:linear-gradient(180deg,#f8ece5,#f2e4dc) !important;
+}
+.titlebar{
+  min-height:27px;
+  border-bottom:1px solid rgba(255,255,255,.45);
+  box-shadow:inset 0 1px rgba(255,255,255,.30);
+  letter-spacing:.15px;
+}
+.menu{
+  background:rgba(255,248,243,.78) !important;
+  border-bottom:1px solid rgba(139,112,122,.18) !important;
+  color:#6f5b64;
+}
+.body{
+  background:
+    radial-gradient(circle at 85% 8%,rgba(255,255,255,.65),transparent 22%),
+    linear-gradient(180deg,rgba(255,250,246,.80),rgba(244,232,226,.74));
+}
+
+/* Inner letter area: no more hard square/inset boxes */
+.panel{
+  position:relative;
+  background:
+    linear-gradient(rgba(255,255,255,.72),rgba(255,250,241,.88)),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 25px,
+      rgba(183,145,160,.055) 26px
+    ) !important;
+  border:1px solid rgba(183,145,160,.30) !important;
+  border-radius:14px !important;
+  padding:20px 21px 18px !important;
+  box-shadow:
+    0 12px 28px rgba(103,75,88,.11),
+    inset 0 1px rgba(255,255,255,.92) !important;
+}
+.panel::before{
+  content:"୨୧  ✦  ☾";
+  position:absolute;
+  top:8px;
+  right:12px;
+  font-size:10px;
+  color:rgba(150,80,107,.38);
+  letter-spacing:3px;
+}
+.heading{
+  margin:4px 0 16px !important;
+  font-size:17px !important;
+  line-height:1.35;
+  letter-spacing:.2px;
+  text-shadow:none !important;
+  color:#8d5269 !important;
+}
+
+/* The actual text now looks like stationery instead of a box */
+.message{
+  position:relative;
+  border:none !important;
+  border-left:3px solid rgba(231,163,187,.72) !important;
+  border-radius:0 11px 11px 0 !important;
+  background:rgba(255,251,244,.72) !important;
+  padding:16px 18px 16px 20px !important;
+  box-shadow:
+    0 5px 16px rgba(100,76,86,.065),
+    inset 0 0 0 1px rgba(212,181,193,.17) !important;
+  color:#50434a;
+  font-family:var(--retro) !important;
+  font-size:11px !important;
+  line-height:1.78 !important;
+}
+.message, .message p, .message span, .message strong, .message em,
+.message br, #typed, #typed * {
+  font-family:var(--retro) !important;
+}
+.message p{
+  padding-bottom:10px;
+  margin-bottom:11px !important;
+  border-bottom:1px dotted rgba(171,132,148,.20);
+}
+.message p:last-child{
+  padding-bottom:0;
+  margin-bottom:0 !important;
+  border-bottom:none;
+}
+
+/* Status/taskbar stay retro but feel less raw */
+.status{
+  background:rgba(238,226,217,.90) !important;
+  color:#74636b;
+}
+#taskbar{
+  background:linear-gradient(180deg,#e5ddd5,#cec4bc) !important;
+  box-shadow:0 -3px 14px rgba(74,58,64,.15);
+}
+.start,.task,.clock{
+  border-radius:4px;
+}
+.task{
+  background:linear-gradient(180deg,#ede5df,#d8cec7) !important;
+}
+
+/* Start menu: slightly softer */
+#startMenu{
+  border-radius:7px 7px 3px 3px;
+  overflow:hidden;
+  box-shadow:0 14px 30px rgba(64,48,56,.25) !important;
+}
+.startItem{
+  background:rgba(246,236,230,.92);
+}
+
+/* Hero polish */
+.hero{
+  border:none !important;
+  border-radius:12px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);
+}
+.hero h1,.kicker,.small,.btn,.desktop-note,.desktop-note strong{
+  font-family:var(--retro) !important;
+}
+
+/* Mobile: open letters feel like a clean little app window */
+@media (max-width:700px){
+  #desktop{
+    gap:22px 12px !important;
+    padding-top:62px !important;
+  }
+  .icon{
+    min-height:96px !important;
+  }
+  .icon-box{
+    width:58px !important;
+    height:45px !important;
+  }
+  .window,
+  #home.window{
+    left:10px !important;
+    right:10px !important;
+    top:56px !important;
+    bottom:52px !important;
+    border-radius:13px !important;
+    box-shadow:0 20px 48px rgba(56,42,49,.30) !important;
+  }
+  .body{
+    padding:12px !important;
+  }
+  .panel{
+    border-radius:13px !important;
+    padding:17px 14px 15px !important;
+  }
+  .message{
+    border-left-width:2px !important;
+    border-radius:0 10px 10px 0 !important;
+    padding:14px 13px 14px 15px !important;
+    font-size:10px !important;
+    line-height:1.72 !important;
+  }
+  .heading{
+    font-size:14px !important;
+    padding-right:18px;
+  }
+}
+
+
+/* =========================================================
+   SOFTER RETRO PASTEL DESKTOP — unified with folder icons
+   ========================================================= */
+
+/* Clean, sharper cloud shapes — no blurry blobs */
+body{
+  background:
+    radial-gradient(circle at 8% 13%, rgba(255,255,255,.58) 0 25px, transparent 26px),
+    radial-gradient(circle at 11% 11%, rgba(255,255,255,.58) 0 34px, transparent 35px),
+    radial-gradient(circle at 15% 13%, rgba(255,255,255,.58) 0 27px, transparent 28px),
+    radial-gradient(circle at 78% 17%, rgba(255,255,255,.42) 0 29px, transparent 30px),
+    radial-gradient(circle at 82% 14%, rgba(255,255,255,.42) 0 38px, transparent 39px),
+    radial-gradient(circle at 87% 17%, rgba(255,255,255,.42) 0 25px, transparent 26px),
+    linear-gradient(135deg,#dcd3c3 0%,#d4cbbb 48%,#c9c0b1 100%) !important;
+}
+
+/* Remove any old top label entirely */
+.retro-label{display:none !important}
+
+/* Windows now share the same gentle material language as the folders */
+.window{
+  background:linear-gradient(180deg,#f8e8ee 0%,#f4e7e2 50%,#eee4dd 100%) !important;
+  border:1px solid rgba(119,91,103,.26) !important;
+  border-radius:12px !important;
+  box-shadow:
+    0 12px 30px rgba(77,59,67,.18),
+    0 3px 0 rgba(91,68,78,.11),
+    inset 0 1px rgba(255,255,255,.75) !important;
+}
+
+/* Pastel title bars instead of strong saturated bars */
+.titlebar,
+.titlebar.lav,
+.titlebar.blue,
+.titlebar.green{
+  background:linear-gradient(180deg,#f3cddd 0%,#ddb1c3 100%) !important;
+  color:#5c4650 !important;
+  border-bottom:1px solid rgba(112,83,95,.20) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.55),
+    inset 0 -1px rgba(122,91,104,.08) !important;
+  min-height:29px !important;
+  height:29px !important;
+}
+.titlebar.lav{
+  background:linear-gradient(180deg,#e9dcf3 0%,#cdbadd 100%) !important;
+}
+.titlebar.blue{
+  background:linear-gradient(180deg,#e3f0f3 0%,#bdd7de 100%) !important;
+}
+.titlebar.green{
+  background:linear-gradient(180deg,#e6f0e7 0%,#c6dbcb 100%) !important;
+}
+.title{
+  text-shadow:0 1px rgba(255,255,255,.55);
+}
+
+/* Window control buttons: tiny soft retro buttons */
+.wbtn{
+  width:21px !important;
+  height:21px !important;
+  border:1px solid rgba(111,84,96,.25) !important;
+  border-radius:4px !important;
+  background:linear-gradient(180deg,#fff8f6,#ead9dc) !important;
+  color:#67515b !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.85),
+    0 1px 0 rgba(94,72,81,.12) !important;
+}
+.wbtn:active{
+  transform:translateY(1px);
+  box-shadow:inset 0 1px 2px rgba(91,68,78,.14) !important;
+}
+
+/* Menus/panels are less boxy and closer to the folder palette */
+.menu{
+  background:rgba(255,247,244,.72) !important;
+  color:#705c65 !important;
+  border-bottom:1px solid rgba(135,104,116,.12) !important;
+}
+.body{
+  background:
+    linear-gradient(180deg,rgba(255,250,247,.72),rgba(247,237,232,.78)) !important;
+}
+.panel{
+  background:
+    linear-gradient(rgba(255,253,248,.82),rgba(255,248,240,.86)),
+    repeating-linear-gradient(0deg,transparent 0,transparent 25px,rgba(178,143,156,.045) 26px) !important;
+  border:1px solid rgba(188,151,165,.22) !important;
+  box-shadow:
+    0 8px 20px rgba(99,75,86,.075),
+    inset 0 1px rgba(255,255,255,.92) !important;
+}
+.message{
+  background:rgba(255,251,246,.63) !important;
+  border-left-color:rgba(221,164,187,.60) !important;
+}
+
+/* Taskbar now belongs to the same pastel family */
+#taskbar{
+  height:39px !important;
+  background:linear-gradient(180deg,#f0dedf 0%,#dfd0cd 100%) !important;
+  border-top:1px solid rgba(112,86,97,.18) !important;
+  box-shadow:
+    0 -5px 20px rgba(70,53,61,.10),
+    inset 0 1px rgba(255,255,255,.65) !important;
+  padding:4px !important;
+}
+.start{
+  height:30px !important;
+  border:1px solid rgba(111,84,96,.23) !important;
+  border-radius:6px !important;
+  background:linear-gradient(180deg,#f8e7ed,#e5c7d2) !important;
+  color:#604b54 !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.70) !important;
+}
+.task{
+  height:30px !important;
+  border:1px solid rgba(111,84,96,.18) !important;
+  border-radius:6px !important;
+  background:linear-gradient(180deg,#f6ece8,#e8d9d3) !important;
+  color:#68545d !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.65) !important;
+}
+.clock{
+  height:30px !important;
+  min-width:104px !important;
+  padding:3px 8px !important;
+  border:1px solid rgba(111,84,96,.16) !important;
+  border-radius:6px !important;
+  background:linear-gradient(180deg,#f7ebe7,#e6d8d2) !important;
+  color:#66525b !important;
+  display:flex !important;
+  flex-direction:column;
+  justify-content:center;
+  line-height:1.05 !important;
+  font-size:9px !important;
+}
+
+/* Start menu softer too */
+#startMenu{
+  bottom:39px !important;
+  background:linear-gradient(180deg,#f7e9e5,#e8dad4) !important;
+  border:1px solid rgba(111,84,96,.22) !important;
+}
+.startHead{
+  background:linear-gradient(180deg,#efc9d8,#dcaec1) !important;
+  color:#5c4650 !important;
+}
+
+/* Keep folder icons visually consistent with windows */
+.icon-box{
+  box-shadow:
+    0 4px 0 rgba(93,72,82,.15),
+    0 8px 18px rgba(93,72,82,.11),
+    inset 0 1px rgba(255,255,255,.52) !important;
+}
+
+/* Mobile taskbar/date refinements */
+@media (max-width:700px){
+  #taskbar{height:44px !important}
+  #startMenu{bottom:44px !important}
+  .window,#home.window{bottom:54px !important}
+  .clock{
+    min-width:82px !important;
+    font-size:8px !important;
+    padding:3px 5px !important;
+  }
+}
+
 </style>
 </head>
 <body>
 
 <div id="desktop">
-  <div class="retro-label">RETRO 95 STYLE</div>
-
-  <div class="doodle d1">✦</div><div class="doodle d2">☾</div><div class="doodle d3">♡</div>
+<div class="doodle d1">✦</div><div class="doodle d2">☾</div><div class="doodle d3">♡</div>
   <div class="doodle d4">✧</div><div class="doodle d5">୨୧</div>
 
   <div class="desktop-note">
@@ -711,7 +1131,12 @@ function typeText(el,text,speed){
   el.textContent="";let i=0;(function next(){if(i<text.length){el.textContent+=text[i++];setTimeout(next,speed)}})()
 }
 function toggleStart(){document.getElementById("startMenu").classList.toggle("open")}
-function updateClock(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}
+function updateClock(){
+  const now=new Date();
+  const time=now.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+  const date=now.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});
+  document.getElementById("clock").innerHTML="<span>"+time+"</span><span>"+date+"</span>";
+}
 updateClock();setInterval(updateClock,1000);
 openWin("home");
 </script>
