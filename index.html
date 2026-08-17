@@ -6,18 +6,22 @@
 <title>starlit-letter.exe</title>
 <style>
 :root{
-  --desktop:#d7d0bf;
-  --window:#f6e8df;
-  --paper:#fff9ef;
-  --pink:#e7a3bb;
-  --pink-dark:#96506b;
-  --pink-light:#ffd8e4;
-  --lav:#c9b8da;
-  --lav-dark:#705b7d;
-  --blue:#bad5dd;
-  --green:#c9dfcf;
-  --cream:#f4ecd9;
-  --ink:#4c4049;
+  --desktop:#d7b9c7;
+  --desktop2:#ead6df;
+  --window:#f2dbe3;
+  --paper:#fff4f7;
+  --pink:#ef9fbd;
+  --pink-dark:#8f4e6d;
+  --pink-light:#ffd8e8;
+  --lav:#cab6db;
+  --lav-dark:#6d5b7b;
+  --blue:#b7d2da;
+  --green:#c8dfcf;
+  --cream:#f8eadf;
+  --ink:#473b45;
+  --bevel-light:#fff9fc;
+  --bevel-mid:#d7bec8;
+  --bevel-dark:#8a737d;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden}
@@ -25,23 +29,34 @@ body{
   font-family:"MS Sans Serif","Microsoft Sans Serif",Tahoma,sans-serif;
   color:var(--ink);
   background:
-    radial-gradient(ellipse at 15% 12%,rgba(255,255,255,.65) 0 7%,transparent 8%),
-    radial-gradient(ellipse at 22% 9%,rgba(255,255,255,.48) 0 8%,transparent 9%),
-    radial-gradient(ellipse at 82% 17%,rgba(255,255,255,.40) 0 9%,transparent 10%),
-    linear-gradient(135deg,var(--desktop),#c7c0b0);
+    radial-gradient(ellipse at 8% 10%,rgba(255,255,255,.86) 0 6%,transparent 7%),
+    radial-gradient(ellipse at 14% 9%,rgba(255,255,255,.72) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 21% 11%,rgba(255,255,255,.56) 0 6%,transparent 7%),
+    radial-gradient(ellipse at 73% 14%,rgba(255,255,255,.66) 0 7%,transparent 8%),
+    radial-gradient(ellipse at 81% 12%,rgba(255,255,255,.84) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 88% 15%,rgba(255,255,255,.58) 0 6%,transparent 7%),
+    radial-gradient(ellipse at 34% 68%,rgba(255,255,255,.42) 0 7%,transparent 8%),
+    radial-gradient(ellipse at 42% 66%,rgba(255,255,255,.58) 0 9%,transparent 10%),
+    linear-gradient(180deg,#e9c8d5 0%,#dfbdcb 45%,#cbb7c7 100%);
+  image-rendering:pixelated;
 }
 body:after{
   content:"";
-  position:fixed;inset:0;pointer-events:none;opacity:.13;
-  background-image:radial-gradient(rgba(80,60,65,.45) .45px,transparent .45px);
-  background-size:4px 4px;
+  position:fixed;inset:0;pointer-events:none;opacity:.16;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.16) 0 1px,rgba(88,55,70,.08) 1px 2px),
+    radial-gradient(rgba(74,48,61,.35) .45px,transparent .45px);
+  background-size:auto,4px 4px;
+  mix-blend-mode:soft-light;
 }
 #desktop{position:fixed;inset:0 0 35px;overflow:hidden}
 .retro-label{
   position:absolute;top:8px;left:10px;z-index:2;
-  padding:4px 9px;background:var(--pink);color:#fff;
+  padding:4px 9px;background:#f0a4bf;color:#fff;
   font-weight:bold;font-size:11px;letter-spacing:.4px;
-  border:2px outset #ffd4df;box-shadow:2px 2px 0 rgba(70,50,60,.25)
+  border-top:2px solid var(--bevel-light);border-left:2px solid var(--bevel-light);
+  border-right:2px solid var(--bevel-dark);border-bottom:2px solid var(--bevel-dark);
+  box-shadow:2px 2px 0 rgba(70,50,60,.28)
 }
 .icon{
   position:absolute;width:88px;text-align:center;padding:5px;
@@ -51,25 +66,30 @@ body:after{
 .icon-box{
   width:42px;height:42px;margin:auto auto 4px;display:flex;
   align-items:center;justify-content:center;font-size:25px;
-  background:#fff8ef;border:2px outset #fff;box-shadow:2px 2px 0 #817874
+  background:#f9e7ed;
+  border-top:2px solid var(--bevel-light);border-left:2px solid var(--bevel-light);
+  border-right:2px solid var(--bevel-dark);border-bottom:2px solid var(--bevel-dark);
+  box-shadow:2px 2px 0 #806d76
 }
 .icon span{font-size:11px;line-height:13px;color:#fff;text-shadow:1px 1px #625b58}
 .window{
   position:absolute;width:min(600px,calc(100vw - 30px));
   max-height:calc(100vh - 52px);display:none;
-  background:var(--window);border:2px outset #fff;
-  box-shadow:3px 3px 0 rgba(60,45,50,.42);z-index:10
+  background:var(--window);
+  border-top:2px solid var(--bevel-light);border-left:2px solid var(--bevel-light);
+  border-right:2px solid var(--bevel-dark);border-bottom:2px solid var(--bevel-dark);
+  box-shadow:4px 4px 0 rgba(67,47,57,.48);z-index:10
 }
 .window.open{display:block;animation:winOpen .15s ease-out}
 @keyframes winOpen{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 .titlebar{
   height:25px;padding:2px 3px 2px 6px;color:#fff;font-size:12px;font-weight:bold;
   display:flex;align-items:center;cursor:move;user-select:none;
-  background:linear-gradient(90deg,var(--pink-dark),var(--pink))
+  background:linear-gradient(90deg,#8a4d6a 0%,#cf7fa1 55%,#eca7c0 100%)
 }
-.titlebar.lav{background:linear-gradient(90deg,var(--lav-dark),var(--lav))}
-.titlebar.blue{background:linear-gradient(90deg,#638d98,var(--blue))}
-.titlebar.green{background:linear-gradient(90deg,#56715d,var(--green))}
+.titlebar.lav{background:linear-gradient(90deg,#665476,#9b82ae 58%,#ccb8dc)}
+.titlebar.blue{background:linear-gradient(90deg,#5f7f8a,#8eb5c0 58%,#bdd5dd)}
+.titlebar.green{background:linear-gradient(90deg,#55705e,#83a98f 58%,#c9dfcf)}
 .title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .controls{display:flex;gap:2px}
 .wbtn{
@@ -79,7 +99,7 @@ body:after{
 .wbtn:active{border-style:inset}
 .menu{
   height:23px;display:flex;align-items:center;gap:18px;padding:0 8px;
-  background:#f4e8df;border-bottom:1px solid #c5b6ae;font-size:11px
+  background:#efdfe5;border-bottom:1px solid #b996a5;font-size:11px
 }
 .body{padding:12px;overflow:auto;max-height:calc(100vh - 99px)}
 .status{
@@ -90,9 +110,12 @@ body:after{
   min-height:325px;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;position:relative;overflow:hidden;
   background:
-    radial-gradient(circle at 50% 20%,rgba(255,255,255,.8),transparent 35%),
-    linear-gradient(145deg,#f9e7e9,#eee0ed 55%,#e7ddd5);
-  border:2px inset #fff
+    radial-gradient(circle at 50% 17%,rgba(255,255,255,.88),transparent 34%),
+    radial-gradient(ellipse at 18% 23%,rgba(255,255,255,.56) 0 10%,transparent 11%),
+    radial-gradient(ellipse at 77% 67%,rgba(255,255,255,.38) 0 12%,transparent 13%),
+    linear-gradient(145deg,#fbe5ed,#eed8e8 52%,#e4d3df);
+  border-top:2px solid #9a8390;border-left:2px solid #9a8390;
+  border-right:2px solid #fff;border-bottom:2px solid #fff
 }
 .hero h1{
   margin:4px 0;color:var(--pink-dark);font-size:29px;letter-spacing:2px;
@@ -116,25 +139,27 @@ body:after{
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .card{
   min-height:118px;padding:10px;text-align:center;cursor:pointer;
-  border:2px outset #fff;background:#f8e9ee;transition:transform .12s
+  border-top:2px solid #fff;border-left:2px solid #fff;
+  border-right:2px solid #9b828d;border-bottom:2px solid #9b828d;
+  background:#f8e1ea;transition:transform .12s
 }
-.card:nth-child(2){background:#eee7f5}
-.card:nth-child(3){background:#e5f1f2}
-.card:nth-child(4){background:#f4ecd8}
-.card:nth-child(5){background:#e5eee4}
-.card:nth-child(6){background:#f1e3ef}
+.card:nth-child(2){background:#eadff2}
+.card:nth-child(3){background:#dfecef}
+.card:nth-child(4){background:#f4e5de}
+.card:nth-child(5){background:#e3ece5}
+.card:nth-child(6){background:#efdeea}
 .card:hover{transform:translateY(-2px)}
 .sym{font-size:21px;display:block;margin-bottom:5px}
 .ctitle{font-weight:bold;font-size:11px}
 .content{display:none;text-align:left;font-size:11px;line-height:1.58;margin-top:6px}
 .card.open .content{display:block}.card.open .ctitle{display:none}
 .message{
-  background:#fffaf0;border:1px dashed #c38da1;padding:12px;margin:9px 0;
+  background:#fff5f7;border:1px dashed #bf879d;padding:12px;margin:9px 0;
   font-size:12px;line-height:1.72
 }
 .message h3{font-size:12px;color:var(--pink-dark);margin:0 0 7px}
 .terminal{
-  background:#28252c;color:#dacde0;border:2px inset #fff;padding:12px;
+  background:#231f27;color:#e5d6ea;border:2px inset #fff;padding:12px;
   font:12px/1.7 "Courier New",monospace
 }
 .cursor{display:inline-block;width:7px;height:13px;background:#dacde0;animation:blink 1s steps(1) infinite}
@@ -148,30 +173,37 @@ body:after{
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 #typed{white-space:pre-line;text-align:left}
 #taskbar{
-  position:fixed;left:0;right:0;bottom:0;height:35px;background:#d8d0c7;
-  border-top:2px solid #fff;display:flex;align-items:center;padding:3px;z-index:9999
+  position:fixed;left:0;right:0;bottom:0;height:35px;background:#d9c4cc;
+  border-top:2px solid #fff3f8;box-shadow:inset 0 1px #af939e;
+  display:flex;align-items:center;padding:3px;z-index:9999
 }
 .start{
-  height:27px;min-width:77px;background:#e7ded6;border:2px outset #fff;
+  height:27px;min-width:77px;background:#edd8e0;
+  border-top:2px solid #fff;border-left:2px solid #fff;
+  border-right:2px solid #8f7781;border-bottom:2px solid #8f7781;
   font-weight:bold;cursor:pointer
 }
 .tasks{display:flex;gap:3px;flex:1;margin-left:5px}
 .task{
-  height:25px;min-width:125px;max-width:180px;text-align:left;background:#ddd5cd;
-  border:2px inset #fff;padding:2px 7px;font-size:11px;cursor:pointer;
+  height:25px;min-width:125px;max-width:180px;text-align:left;background:#e4d2d9;
+  border-top:2px solid #917a84;border-left:2px solid #917a84;
+  border-right:2px solid #fff;border-bottom:2px solid #fff;padding:2px 7px;font-size:11px;cursor:pointer;
   overflow:hidden;white-space:nowrap;text-overflow:ellipsis
 }
 .clock{
   height:26px;min-width:70px;padding:5px;text-align:center;
-  background:#ded6ce;border:2px inset #fff;font-size:11px
+  background:#e3d1d8;border-top:2px solid #917a84;border-left:2px solid #917a84;
+  border-right:2px solid #fff;border-bottom:2px solid #fff;font-size:11px
 }
 #startMenu{
-  position:fixed;left:4px;bottom:35px;width:220px;background:#e4dbd3;
-  border:2px outset #fff;box-shadow:3px 3px #756b68;z-index:10000;display:none
+  position:fixed;left:4px;bottom:35px;width:220px;background:#e6d2da;
+  border-top:2px solid #fff;border-left:2px solid #fff;
+  border-right:2px solid #8f7882;border-bottom:2px solid #8f7882;
+  box-shadow:3px 3px #75616b;z-index:10000;display:none
 }
 #startMenu.open{display:block}
 .startHead{
-  height:48px;background:linear-gradient(90deg,var(--pink-dark),var(--pink));
+  height:48px;background:linear-gradient(90deg,#8a4d6a,#e39ab7);
   color:#fff;font-weight:bold;display:flex;align-items:flex-end;padding:8px;font-size:12px
 }
 .startItem{padding:9px 12px;font-size:11px;border-bottom:1px solid #c3b7b0;cursor:pointer}
@@ -182,24 +214,42 @@ body:after{
 }
 @keyframes float{to{opacity:0;transform:translate(var(--x),-100px) scale(1.3)}}
 @media(max-width:650px){.grid{grid-template-columns:1fr}.hero h1{font-size:23px}.task{min-width:80px}}
+
+/* Retro display typography */
+:root{
+  --retro-font:"Courier New","Lucida Console",monospace;
+  --reading-font:"MS Sans Serif","Microsoft Sans Serif",Tahoma,sans-serif;
+}
+.titlebar,.retro-label,.icon span,.hero h1,.heading,.btn,.start,.startHead,.startItem,.ctitle,.status,.task{
+  font-family:var(--retro-font);
+}
+.hero h1,.heading,.retro-label,.ctitle{
+  font-weight:700;
+  letter-spacing:.7px;
+}
+.content,.message,.small,.sub,.body{
+  font-family:var(--reading-font);
+}
+
 </style>
 </head>
 <body>
 
 <div id="desktop">
   <div class="retro-label">RETRO 95 STYLE</div>
+  <div style="position:absolute;right:22px;top:18px;color:#fff;font-size:12px;text-shadow:1px 1px #8a6776;z-index:2">✦ starlit desktop ✦</div>
 
   <div class="icon" style="left:18px;top:65px" onclick="openWin('home')">
-    <div class="icon-box">♡</div><span>starlit<br>letter</span>
+    <div class="icon-box">▣</div><span>starlit<br>letter</span>
   </div>
   <div class="icon" style="left:18px;top:160px" onclick="openWin('letters')">
-    <div class="icon-box">✦</div><span>little<br>letters</span>
+    <div class="icon-box">✉</div><span>little<br>letters</span>
   </div>
   <div class="icon" style="left:18px;top:255px" onclick="openWin('moments')">
-    <div class="icon-box">☾</div><span>moments</span>
+    <div class="icon-box">▤</div><span>moments</span>
   </div>
   <div class="icon" style="left:18px;top:350px" onclick="openWin('secret')">
-    <div class="icon-box">?</div><span>secret.exe</span>
+    <div class="icon-box">⌘</div><span>secret.exe</span>
   </div>
 
   <section class="window" id="home" style="left:50%;top:50%;transform:translate(-50%,-50%);width:min(570px,calc(100vw - 30px))">
