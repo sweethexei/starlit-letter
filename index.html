@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>starlit-letter ♡</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+  :root{
+    --pink:#f3a6bd; --pink2:#ffd5e2; --cream:#fff9e9; --lav:#cbb9df;
+    --blue:#b9d7df; --green:#c7dfcf; --brown:#8f6570; --ink:#4d3c4b;
+    --shadow:#7d6570; --white:#fffdf8;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{
+    overflow:hidden;color:var(--ink);font-family:'VT323',monospace;
+    background:
+      radial-gradient(circle at 15% 18%,rgba(255,255,255,.9) 0 4%,transparent 5%),
+      radial-gradient(circle at 80% 28%,rgba(255,255,255,.75) 0 5%,transparent 6%),
+      linear-gradient(135deg,#d8d1c4 0%,#f4eee4 48%,#cfc9bd 100%);
+    cursor:default;
+  }
+  body:before,body:after{content:"";position:fixed;inset:auto;pointer-events:none;z-index:0;filter:blur(1px)}
+  body:before{width:360px;height:120px;left:4%;top:10%;background:rgba(255,255,255,.45);border-radius:50%;box-shadow:40px 15px 0 rgba(255,255,255,.3),90px -8px 0 rgba(255,255,255,.35)}
+  body:after{width:300px;height:100px;right:5%;bottom:9%;background:rgba(255,255,255,.35);border-radius:50%;box-shadow:-45px 10px 0 rgba(255,255,255,.25),-90px -5px 0 rgba(255,255,255,.3)}
+  .tag{position:fixed;top:8px;left:8px;background:#ff79a5;color:#fff;padding:5px 10px;font-family:'Press Start 2P',monospace;font-size:9px;box-shadow:3px 3px 0 #8f6570;z-index:20}
+  .desktop{position:relative;z-index:2;width:100%;height:100%;display:grid;place-items:center;padding:30px}
+  .window{width:min(600px,92vw);background:var(--cream);border:2px solid #805968;box-shadow:8px 8px 0 rgba(93,66,77,.35),inset 0 0 0 1px #fff;animation:float 5s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-5px)}}
+  .titlebar{height:32px;background:linear-gradient(#f7b3c7,#e98faa);border-bottom:2px solid #805968;display:flex;align-items:center;padding:0 7px;gap:8px;font-family:'Press Start 2P',monospace;font-size:10px;color:#603d49}
+  .titlebar .icon{width:17px;height:17px;background:#ffdce8;border:1px solid #805968;display:grid;place-items:center;font-size:11px}
+  .titlebar .title{flex:1}.close{width:19px;height:19px;border:1px solid #805968;background:#f9d9e3;display:grid;place-items:center;font-family:Arial;font-weight:bold;cursor:pointer}
+  .menu{height:27px;border-bottom:1px solid #c3a8b1;padding:4px 9px;font-size:18px;background:#fff4f7}
+  .content{padding:24px 28px 28px;text-align:center;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .tiny{font-size:18px;letter-spacing:1px;margin-bottom:8px}.headline{font-family:'Press Start 2P',monospace;font-size:clamp(16px,3vw,25px);line-height:1.7;color:#b65f7c;text-shadow:2px 2px #f8d2df;margin:4px 0 18px}
+  .sub{font-size:24px;line-height:1.15;max-width:440px;margin:0 auto 24px}
+  .hold-wrap{position:relative;margin:12px 0 22px}
+  .hold{font-family:'Press Start 2P',monospace;font-size:13px;color:#a34f6d;background:linear-gradient(#ffe5ee,#f2a5bd);border:2px solid #805968;border-radius:2px;padding:17px 27px;box-shadow:4px 4px 0 #9b7781, inset 0 0 0 2px #fff5f8;cursor:pointer;user-select:none;touch-action:none}
+  .hold:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #9b7781}
+  .hint{font-size:18px;color:#826b75}.stars{position:absolute;inset:-40px -100px;pointer-events:none}.star{position:absolute;color:#c29acb;font-size:22px;animation:twinkle 2s ease-in-out infinite}.s1{left:4%;top:25%}.s2{right:5%;top:8%;animation-delay:.6s}.s3{right:13%;bottom:8%;animation-delay:1s}.s4{left:12%;bottom:2%;animation-delay:1.5s}
+  @keyframes twinkle{50%{opacity:.25;transform:scale(.7) rotate(12deg)}}
+  .progress{height:8px;width:240px;border:1px solid #8b6673;background:#fff;margin-top:4px;overflow:hidden}.bar{height:100%;width:0;background:#d87f9f;transition:width .05s linear}
+  .hidden{display:none!important}
+  .secret{width:min(480px,100%);animation:pop .5s ease}.secret-card{background:#fffdf4;border:1px dashed #ad7184;padding:22px;box-shadow:4px 4px 0 #d5bbc2;position:relative}.secret-card:before{content:"♡";position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#ffdbe6;border:1px solid #ad7184;padding:3px 9px;font-size:20px}.secret-text{font-size:26px;line-height:1.15;margin:16px 0}.continue{margin-top:18px;background:#cdbde1;border-color:#745c7c;color:#56445e}
+  @keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+  .footer{font-size:17px;margin-top:20px;color:#806b73}.blink{animation:blink 1.2s steps(2) infinite}@keyframes blink{50%{opacity:0}}
+  .petal{position:fixed;top:-30px;z-index:10;font-size:17px;pointer-events:none;animation:fall linear forwards}.heart{color:#d9789a}.spark{color:#b38ac3}@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+  @media(max-width:600px){.content{min-height:390px;padding:20px}.window{width:95vw}.menu{font-size:15px}.sub{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="tag">RETRO 95 STYLE</div>
+<div class="desktop">
+  <main class="window" id="window">
+    <div class="titlebar"><div class="icon">♡</div><div class="title">ST★RLIT_LETTER.EXE</div><button class="close" onclick="closeFake()">×</button></div>
+    <div class="menu">File&nbsp;&nbsp; Edit&nbsp;&nbsp; View&nbsp;&nbsp; Help</div>
+    <section class="content" id="start">
+      <div class="stars"><span class="star s1">✦</span><span class="star s2">✧</span><span class="star s3">⋆</span><span class="star s4">✦</span></div>
+      <div class="tiny">｡ﾟ･ ✦ ୨୧ ✦ ･ﾟ｡</div>
+      <h1 class="headline">I made something<br>just for you.</h1>
+      <p class="sub">There is a little secret hidden inside this very old-looking computer.</p>
+      <div class="hold-wrap">
+        <button class="hold" id="hold">HOLD ME</button>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+      </div>
+      <div class="hint">Hold and press to unlock the secret<span class="blink">_</span></div>
+      <div class="footer">☾ starlit-letter.exe • 1995-ish</div>
+    </section>
+
+    <section class="content hidden" id="secret">
+      <div class="tiny">✦ secret unlocked ✦</div>
+      <div class="secret">
+        <div class="secret-card">
+          <div class="secret-text">You found it.<br>Of course you did. ୨୧</div>
+          <p style="font-size:21px">But there is one last thing waiting for you...</p>
+          <button class="hold continue" id="openLetter">OPEN LETTER</button>
+        </div>
+      </div>
+      <div class="footer">somewhere between the stars, there is a little letter for you.</div>
+    </section>
+
+    <section class="content hidden" id="letter">
+      <div class="tiny">☾ a letter for you ☾</div>
+      <div class="secret-card" style="max-width:500px">
+        <div class="secret-text" id="finalText">Tu comptes énormément pour moi. Thank you for being there, especially on my hardest days. I love our little moments, our laughs, and simply being me with you. ୨୧</div>
+        <div style="font-size:21px">— with love, just for you —</div>
+      </div>
+      <div class="footer">✦ you can come back here whenever you want ✦</div>
+    </section>
+  </main>
+</div>
+<script>
+const hold=document.getElementById('hold'),bar=document.getElementById('bar');
+let timer=null,start=0,duration=1700;
+function begin(e){e.preventDefault(); if(timer)return; start=performance.now(); timer=requestAnimationFrame(loop)}
+function loop(now){const p=Math.min((now-start)/duration,1);bar.style.width=(p*100)+'%'; if(p<1) timer=requestAnimationFrame(loop); else unlock()}
+function end(){if(timer){cancelAnimationFrame(timer);timer=null;bar.style.width='0'}}
+function unlock(){timer=null;bar.style.width='100%';document.getElementById('start').classList.add('hidden');document.getElementById('secret').classList.remove('hidden');rain()}
+hold.addEventListener('pointerdown',begin);['pointerup','pointerleave','pointercancel'].forEach(x=>hold.addEventListener(x,end));
+
+document.getElementById('openLetter').addEventListener('click',()=>{document.getElementById('secret').classList.add('hidden');document.getElementById('letter').classList.remove('hidden');rain();typeText();});
+function typeText(){const el=document.getElementById('finalText'),text=el.textContent.trim();el.textContent='';let i=0;const t=setInterval(()=>{el.textContent+=text[i++]||'';if(i>=text.length)clearInterval(t)},18)}
+function rain(){for(let i=0;i<28;i++){const x=document.createElement('div');x.className='petal '+(Math.random()>.5?'heart':'spark');x.textContent=Math.random()>.5?'♡':'✦';x.style.left=Math.random()*100+'vw';x.style.animationDuration=(3+Math.random()*4)+'s';x.style.animationDelay=Math.random()*1.5+'s';document.body.appendChild(x);setTimeout(()=>x.remove(),8000)}}
+function closeFake(){alert('Nice try. You still have to finish the letter first. ♡')}
+</script>
+</body>
+</html>
