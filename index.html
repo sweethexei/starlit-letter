@@ -1,108 +1,588 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>starlit-letter ♡</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>starlit-letter.exe</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
-  :root{
-    --pink:#f3a6bd; --pink2:#ffd5e2; --cream:#fff9e9; --lav:#cbb9df;
-    --blue:#b9d7df; --green:#c7dfcf; --brown:#8f6570; --ink:#4d3c4b;
-    --shadow:#7d6570; --white:#fffdf8;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0}
-  body{
-    overflow:hidden;color:var(--ink);font-family:'VT323',monospace;
-    background:
-      radial-gradient(circle at 15% 18%,rgba(255,255,255,.9) 0 4%,transparent 5%),
-      radial-gradient(circle at 80% 28%,rgba(255,255,255,.75) 0 5%,transparent 6%),
-      linear-gradient(135deg,#d8d1c4 0%,#f4eee4 48%,#cfc9bd 100%);
-    cursor:default;
-  }
-  body:before,body:after{content:"";position:fixed;inset:auto;pointer-events:none;z-index:0;filter:blur(1px)}
-  body:before{width:360px;height:120px;left:4%;top:10%;background:rgba(255,255,255,.45);border-radius:50%;box-shadow:40px 15px 0 rgba(255,255,255,.3),90px -8px 0 rgba(255,255,255,.35)}
-  body:after{width:300px;height:100px;right:5%;bottom:9%;background:rgba(255,255,255,.35);border-radius:50%;box-shadow:-45px 10px 0 rgba(255,255,255,.25),-90px -5px 0 rgba(255,255,255,.3)}
-  .tag{position:fixed;top:8px;left:8px;background:#ff79a5;color:#fff;padding:5px 10px;font-family:'Press Start 2P',monospace;font-size:9px;box-shadow:3px 3px 0 #8f6570;z-index:20}
-  .desktop{position:relative;z-index:2;width:100%;height:100%;display:grid;place-items:center;padding:30px}
-  .window{width:min(600px,92vw);background:var(--cream);border:2px solid #805968;box-shadow:8px 8px 0 rgba(93,66,77,.35),inset 0 0 0 1px #fff;animation:float 5s ease-in-out infinite}
-  @keyframes float{50%{transform:translateY(-5px)}}
-  .titlebar{height:32px;background:linear-gradient(#f7b3c7,#e98faa);border-bottom:2px solid #805968;display:flex;align-items:center;padding:0 7px;gap:8px;font-family:'Press Start 2P',monospace;font-size:10px;color:#603d49}
-  .titlebar .icon{width:17px;height:17px;background:#ffdce8;border:1px solid #805968;display:grid;place-items:center;font-size:11px}
-  .titlebar .title{flex:1}.close{width:19px;height:19px;border:1px solid #805968;background:#f9d9e3;display:grid;place-items:center;font-family:Arial;font-weight:bold;cursor:pointer}
-  .menu{height:27px;border-bottom:1px solid #c3a8b1;padding:4px 9px;font-size:18px;background:#fff4f7}
-  .content{padding:24px 28px 28px;text-align:center;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .tiny{font-size:18px;letter-spacing:1px;margin-bottom:8px}.headline{font-family:'Press Start 2P',monospace;font-size:clamp(16px,3vw,25px);line-height:1.7;color:#b65f7c;text-shadow:2px 2px #f8d2df;margin:4px 0 18px}
-  .sub{font-size:24px;line-height:1.15;max-width:440px;margin:0 auto 24px}
-  .hold-wrap{position:relative;margin:12px 0 22px}
-  .hold{font-family:'Press Start 2P',monospace;font-size:13px;color:#a34f6d;background:linear-gradient(#ffe5ee,#f2a5bd);border:2px solid #805968;border-radius:2px;padding:17px 27px;box-shadow:4px 4px 0 #9b7781, inset 0 0 0 2px #fff5f8;cursor:pointer;user-select:none;touch-action:none}
-  .hold:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #9b7781}
-  .hint{font-size:18px;color:#826b75}.stars{position:absolute;inset:-40px -100px;pointer-events:none}.star{position:absolute;color:#c29acb;font-size:22px;animation:twinkle 2s ease-in-out infinite}.s1{left:4%;top:25%}.s2{right:5%;top:8%;animation-delay:.6s}.s3{right:13%;bottom:8%;animation-delay:1s}.s4{left:12%;bottom:2%;animation-delay:1.5s}
-  @keyframes twinkle{50%{opacity:.25;transform:scale(.7) rotate(12deg)}}
-  .progress{height:8px;width:240px;border:1px solid #8b6673;background:#fff;margin-top:4px;overflow:hidden}.bar{height:100%;width:0;background:#d87f9f;transition:width .05s linear}
-  .hidden{display:none!important}
-  .secret{width:min(480px,100%);animation:pop .5s ease}.secret-card{background:#fffdf4;border:1px dashed #ad7184;padding:22px;box-shadow:4px 4px 0 #d5bbc2;position:relative}.secret-card:before{content:"♡";position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#ffdbe6;border:1px solid #ad7184;padding:3px 9px;font-size:20px}.secret-text{font-size:26px;line-height:1.15;margin:16px 0}.continue{margin-top:18px;background:#cdbde1;border-color:#745c7c;color:#56445e}
-  @keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-  .footer{font-size:17px;margin-top:20px;color:#806b73}.blink{animation:blink 1.2s steps(2) infinite}@keyframes blink{50%{opacity:0}}
-  .petal{position:fixed;top:-30px;z-index:10;font-size:17px;pointer-events:none;animation:fall linear forwards}.heart{color:#d9789a}.spark{color:#b38ac3}@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-  @media(max-width:600px){.content{min-height:390px;padding:20px}.window{width:95vw}.menu{font-size:15px}.sub{font-size:21px}}
+:root{
+  --desktop:#d7d0bf;
+  --window:#f6e8df;
+  --paper:#fff9ef;
+  --pink:#e7a3bb;
+  --pink-dark:#96506b;
+  --pink-light:#ffd8e4;
+  --lav:#c9b8da;
+  --lav-dark:#705b7d;
+  --blue:#bad5dd;
+  --green:#c9dfcf;
+  --cream:#f4ecd9;
+  --ink:#4c4049;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  font-family:"MS Sans Serif","Microsoft Sans Serif",Tahoma,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 15% 12%,rgba(255,255,255,.65) 0 7%,transparent 8%),
+    radial-gradient(ellipse at 22% 9%,rgba(255,255,255,.48) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 82% 17%,rgba(255,255,255,.40) 0 9%,transparent 10%),
+    linear-gradient(135deg,var(--desktop),#c7c0b0);
+}
+body:after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;opacity:.13;
+  background-image:radial-gradient(rgba(80,60,65,.45) .45px,transparent .45px);
+  background-size:4px 4px;
+}
+#desktop{position:fixed;inset:0 0 35px;overflow:hidden}
+.retro-label{
+  position:absolute;top:8px;left:10px;z-index:2;
+  padding:4px 9px;background:var(--pink);color:#fff;
+  font-weight:bold;font-size:11px;letter-spacing:.4px;
+  border:2px outset #ffd4df;box-shadow:2px 2px 0 rgba(70,50,60,.25)
+}
+.icon{
+  position:absolute;width:88px;text-align:center;padding:5px;
+  cursor:pointer;user-select:none;border:1px dotted transparent;z-index:3
+}
+.icon:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+.icon-box{
+  width:42px;height:42px;margin:auto auto 4px;display:flex;
+  align-items:center;justify-content:center;font-size:25px;
+  background:#fff8ef;border:2px outset #fff;box-shadow:2px 2px 0 #817874
+}
+.icon span{font-size:11px;line-height:13px;color:#fff;text-shadow:1px 1px #625b58}
+.window{
+  position:absolute;width:min(600px,calc(100vw - 30px));
+  max-height:calc(100vh - 52px);display:none;
+  background:var(--window);border:2px outset #fff;
+  box-shadow:3px 3px 0 rgba(60,45,50,.42);z-index:10
+}
+.window.open{display:block;animation:winOpen .15s ease-out}
+@keyframes winOpen{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+.titlebar{
+  height:25px;padding:2px 3px 2px 6px;color:#fff;font-size:12px;font-weight:bold;
+  display:flex;align-items:center;cursor:move;user-select:none;
+  background:linear-gradient(90deg,var(--pink-dark),var(--pink))
+}
+.titlebar.lav{background:linear-gradient(90deg,var(--lav-dark),var(--lav))}
+.titlebar.blue{background:linear-gradient(90deg,#638d98,var(--blue))}
+.titlebar.green{background:linear-gradient(90deg,#56715d,var(--green))}
+.title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.controls{display:flex;gap:2px}
+.wbtn{
+  width:18px;height:18px;padding:0;background:#eaded7;color:var(--ink);
+  border:2px outset #fff;font-weight:bold;cursor:pointer
+}
+.wbtn:active{border-style:inset}
+.menu{
+  height:23px;display:flex;align-items:center;gap:18px;padding:0 8px;
+  background:#f4e8df;border-bottom:1px solid #c5b6ae;font-size:11px
+}
+.body{padding:12px;overflow:auto;max-height:calc(100vh - 99px)}
+.status{
+  height:21px;padding:3px 7px;font-size:10px;
+  background:#eee2d9;border-top:2px groove #fff
+}
+.hero{
+  min-height:325px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.8),transparent 35%),
+    linear-gradient(145deg,#f9e7e9,#eee0ed 55%,#e7ddd5);
+  border:2px inset #fff
+}
+.hero h1{
+  margin:4px 0;color:var(--pink-dark);font-size:29px;letter-spacing:2px;
+  text-shadow:2px 2px #fff
+}
+.kicker{font-size:11px;color:#756b72}.symbol{font-size:24px;color:var(--lav-dark)}
+.small{font-size:11px;line-height:1.6}.center{text-align:center}
+.star{position:absolute;color:#fff;animation:twinkle 1.8s infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.75)}to{opacity:1;transform:scale(1.15)}}
+.btn{
+  display:inline-block;margin:5px;padding:8px 16px;background:#ead8d2;color:var(--pink-dark);
+  font:700 12px "MS Sans Serif",Tahoma,sans-serif;border:2px outset #fff;cursor:pointer
+}
+.btn:active{border-style:inset}
+.panel{background:var(--paper);border:2px inset #fff;padding:13px}
+.heading{
+  text-align:center;color:var(--pink-dark);font-size:19px;
+  text-shadow:1px 1px #fff;margin:2px 0 5px
+}
+.sub{text-align:center;font-size:11px;margin:0 0 12px;color:#756b72}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.card{
+  min-height:118px;padding:10px;text-align:center;cursor:pointer;
+  border:2px outset #fff;background:#f8e9ee;transition:transform .12s
+}
+.card:nth-child(2){background:#eee7f5}
+.card:nth-child(3){background:#e5f1f2}
+.card:nth-child(4){background:#f4ecd8}
+.card:nth-child(5){background:#e5eee4}
+.card:nth-child(6){background:#f1e3ef}
+.card:hover{transform:translateY(-2px)}
+.sym{font-size:21px;display:block;margin-bottom:5px}
+.ctitle{font-weight:bold;font-size:11px}
+.content{display:none;text-align:left;font-size:11px;line-height:1.58;margin-top:6px}
+.card.open .content{display:block}.card.open .ctitle{display:none}
+.message{
+  background:#fffaf0;border:1px dashed #c38da1;padding:12px;margin:9px 0;
+  font-size:12px;line-height:1.72
+}
+.message h3{font-size:12px;color:var(--pink-dark);margin:0 0 7px}
+.terminal{
+  background:#28252c;color:#dacde0;border:2px inset #fff;padding:12px;
+  font:12px/1.7 "Courier New",monospace
+}
+.cursor{display:inline-block;width:7px;height:13px;background:#dacde0;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.locked{text-align:center;padding:14px}
+.lockicon{font-size:39px;color:var(--pink-dark)}
+.progress{height:14px;background:#d9d0cb;border:2px inset #fff;margin:10px 0;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .08s}
+#final{display:none}
+#final.show{display:block;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#typed{white-space:pre-line;text-align:left}
+#taskbar{
+  position:fixed;left:0;right:0;bottom:0;height:35px;background:#d8d0c7;
+  border-top:2px solid #fff;display:flex;align-items:center;padding:3px;z-index:9999
+}
+.start{
+  height:27px;min-width:77px;background:#e7ded6;border:2px outset #fff;
+  font-weight:bold;cursor:pointer
+}
+.tasks{display:flex;gap:3px;flex:1;margin-left:5px}
+.task{
+  height:25px;min-width:125px;max-width:180px;text-align:left;background:#ddd5cd;
+  border:2px inset #fff;padding:2px 7px;font-size:11px;cursor:pointer;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis
+}
+.clock{
+  height:26px;min-width:70px;padding:5px;text-align:center;
+  background:#ded6ce;border:2px inset #fff;font-size:11px
+}
+#startMenu{
+  position:fixed;left:4px;bottom:35px;width:220px;background:#e4dbd3;
+  border:2px outset #fff;box-shadow:3px 3px #756b68;z-index:10000;display:none
+}
+#startMenu.open{display:block}
+.startHead{
+  height:48px;background:linear-gradient(90deg,var(--pink-dark),var(--pink));
+  color:#fff;font-weight:bold;display:flex;align-items:flex-end;padding:8px;font-size:12px
+}
+.startItem{padding:9px 12px;font-size:11px;border-bottom:1px solid #c3b7b0;cursor:pointer}
+.startItem:hover{background:var(--pink);color:#fff}
+.particle{
+  position:fixed;pointer-events:none;z-index:10001;
+  animation:float 1.5s forwards;font-size:14px
+}
+@keyframes float{to{opacity:0;transform:translate(var(--x),-100px) scale(1.3)}}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.hero h1{font-size:23px}.task{min-width:80px}}
 </style>
 </head>
 <body>
-<div class="tag">RETRO 95 STYLE</div>
-<div class="desktop">
-  <main class="window" id="window">
-    <div class="titlebar"><div class="icon">♡</div><div class="title">ST★RLIT_LETTER.EXE</div><button class="close" onclick="closeFake()">×</button></div>
-    <div class="menu">File&nbsp;&nbsp; Edit&nbsp;&nbsp; View&nbsp;&nbsp; Help</div>
-    <section class="content" id="start">
-      <div class="stars"><span class="star s1">✦</span><span class="star s2">✧</span><span class="star s3">⋆</span><span class="star s4">✦</span></div>
-      <div class="tiny">｡ﾟ･ ✦ ୨୧ ✦ ･ﾟ｡</div>
-      <h1 class="headline">I made something<br>just for you.</h1>
-      <p class="sub">There is a little secret hidden inside this very old-looking computer.</p>
-      <div class="hold-wrap">
-        <button class="hold" id="hold">HOLD ME</button>
-        <div class="progress"><div class="bar" id="bar"></div></div>
-      </div>
-      <div class="hint">Hold and press to unlock the secret<span class="blink">_</span></div>
-      <div class="footer">☾ starlit-letter.exe • 1995-ish</div>
-    </section>
 
-    <section class="content hidden" id="secret">
-      <div class="tiny">✦ secret unlocked ✦</div>
-      <div class="secret">
-        <div class="secret-card">
-          <div class="secret-text">You found it.<br>Of course you did. ୨୧</div>
-          <p style="font-size:21px">But there is one last thing waiting for you...</p>
-          <button class="hold continue" id="openLetter">OPEN LETTER</button>
+<div id="desktop">
+  <div class="retro-label">RETRO 95 STYLE</div>
+
+  <div class="icon" style="left:18px;top:65px" onclick="openWin('home')">
+    <div class="icon-box">♡</div><span>starlit<br>letter</span>
+  </div>
+  <div class="icon" style="left:18px;top:160px" onclick="openWin('letters')">
+    <div class="icon-box">✦</div><span>little<br>letters</span>
+  </div>
+  <div class="icon" style="left:18px;top:255px" onclick="openWin('moments')">
+    <div class="icon-box">☾</div><span>moments</span>
+  </div>
+  <div class="icon" style="left:18px;top:350px" onclick="openWin('secret')">
+    <div class="icon-box">?</div><span>secret.exe</span>
+  </div>
+
+  <section class="window" id="home" style="left:50%;top:50%;transform:translate(-50%,-50%);width:min(570px,calc(100vw - 30px))">
+    <div class="titlebar">
+      <div class="title">♡ ST★RLIT_LETTER.EXE</div>
+      <div class="controls">
+        <button class="wbtn" onclick="minWin('home')">_</button>
+        <button class="wbtn" onclick="closeWin('home')">×</button>
+      </div>
+    </div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
+    <div class="body">
+      <div class="hero">
+        <span class="star" style="left:14%;top:18%">✦</span>
+        <span class="star" style="right:18%;top:24%;animation-delay:.5s">✧</span>
+        <span class="star" style="left:25%;bottom:17%;animation-delay:.9s">♡</span>
+        <span class="star" style="right:26%;bottom:20%;animation-delay:.2s">✦</span>
+        <div class="kicker">a little something, made just for you</div>
+        <h1>starlit letter</h1>
+        <div class="symbol">☾ ୨୧ ✦</div>
+        <p class="small">I left a few little things here.<br>Open them slowly. There is no rush.</p>
+        <button class="btn" onclick="openWin('letters');spark(event)">OPEN LETTERS</button>
+      </div>
+    </div>
+    <div class="status">Ready &nbsp;|&nbsp; 6 little letters waiting</div>
+  </section>
+
+  <section class="window" id="letters" style="left:30%;top:10%;width:min(650px,calc(100vw - 30px))">
+    <div class="titlebar lav">
+      <div class="title">little_letters.txt</div>
+      <div class="controls">
+        <button class="wbtn" onclick="minWin('letters')">_</button>
+        <button class="wbtn" onclick="closeWin('letters')">×</button>
+      </div>
+    </div>
+    <div class="menu"><span>File</span><span>Open</span><span>Options</span></div>
+    <div class="body">
+      <div class="panel">
+        <div class="heading">little letters ♡</div>
+        <p class="sub">Click each little window to read it.</p>
+
+        <div class="grid">
+          <div class="card" onclick="reveal(this)">
+            <span class="sym">୨୧</span>
+            <span class="ctitle">01 — Things I love about you</span>
+            <div class="content">
+              Your eyes, your smile, and the way you look at me.<br><br>
+              J’aime ton regard, ton sourire, et cette façon que tu as de faire attention à moi, même dans les plus petites choses.<br><br>
+              You notice things. You care. You make me feel seen without even having to ask.<br><br>
+              Tu fais attention à moi sans que j’aie besoin de le demander, et je crois que c’est une des choses que j’aime le plus chez toi.<br><br>
+              ♡ Even the little things about you have become some of my favorite things.
+            </div>
+          </div>
+
+          <div class="card" onclick="reveal(this)">
+            <span class="sym">♡</span>
+            <span class="ctitle">02 — A moment I cherish</span>
+            <div class="content">
+              The day you met Nana.<br><br>
+              I remember how much I was thinking about that moment beforehand.<br>
+              Je l’appréhendais, parce que Nana est une partie tellement importante de ma vie, et que te voir la rencontrer comptait énormément pour moi.<br><br>
+              And somehow, everything just felt right.<br>
+              Et finalement, tout s’est passé naturellement. Vous avez créé votre petit lien, à votre manière, et voir ça m’a profondément touchée.<br><br>
+              I think I'll always keep that moment somewhere special in my heart.<br>
+              Parce que ce jour-là, ce n’était pas seulement toi qui rencontrais Nana. C’était aussi un petit morceau de nos vies qui commençait à se mélanger. ୨୧
+            </div>
+          </div>
+
+          <div class="card" onclick="reveal(this)">
+            <span class="sym">☾</span>
+            <span class="ctitle">03 — When I'm having a bad day</span>
+            <div class="content">
+              When the day feels a little too heavy, I know I can come to you.<br><br>
+              I know you'll listen. I know you'll make me laugh when I need it most, and somehow find a way to make me smile again.<br>
+              Je sais que tu trouveras toujours les bons mots, ou parfois simplement ta façon d’être, pour rendre les choses un peu plus légères.<br><br>
+              You are so gentle with me on the days when I'm not at my best.<br>
+              Tu sais me réconforter sans jamais me faire sentir que je suis “trop”, et cette douceur-là compte plus que tu ne le sais.<br><br>
+              ♡ Somehow, even my worst days feel a little less lonely when I have you.
+            </div>
+          </div>
+
+          <div class="card" onclick="reveal(this)">
+            <span class="sym">✦</span>
+            <span class="ctitle">04 — Things I want with you</span>
+            <div class="content">
+              Honestly? I don't need anything extraordinary.<br><br>
+              I just want to live our little life together.<br>
+              Je veux simplement vivre notre vie tranquillement, avec toi, Zorro and Nana.<br><br>
+              A little home. Quiet evenings. Random laughs. Silly conversations.<br>
+              Les petites habitudes, les journées ordinaires, les moments où il ne se passe absolument rien… mais où je suis heureuse simplement parce que tu es là.<br><br>
+              I think that's what I want most:<br>
+              a life that feels like home because you're in it.<br><br>
+              ♡ Just you, me, Zoro, Nana — and all the little moments in between.
+            </div>
+          </div>
+
+          <div class="card" onclick="reveal(this)">
+            <span class="sym">✧</span>
+            <span class="ctitle">05 — The little things</span>
+            <div class="content">
+              Maybe love isn't always found in the big moments.<br><br>
+              Maybe it's in the tiny things we don't even think about.<br>
+              Dans les regards échangés sans raison, les rires pour des choses complètement idiotes, les petites habitudes qui deviennent les nôtres.<br><br>
+              It's in feeling comfortable enough to be completely myself,<br>
+              and knowing that I can be silly, quiet, messy, soft, or simply me.<br><br>
+              ♡ I think my favorite kind of love is the one that quietly becomes home.
+            </div>
+          </div>
+
+          <div class="card" onclick="reveal(this)">
+            <span class="sym">♡</span>
+            <span class="ctitle">06 — One last thing</span>
+            <div class="content">
+              Tu as vraiment une place à part pour moi.<br><br>
+              Thank you for being there, especially on my hardest days.<br>
+              Thank you for listening to me, for making me laugh when I need it, for being gentle with me, and for caring about the little things.<br><br>
+              I love our little moments, our laughs, our stupid conversations, and all the quiet moments in between. I love that I can simply be myself with you, without having to pretend to be anything else.<br><br>
+              Je crois que ce que j'aime le plus, c'est tout ce qu'on construit sans même forcément s'en rendre compte. Les souvenirs, les habitudes, les petits moments qui paraissent insignifiants sur le coup, mais qui finissent par devenir précieux.<br><br>
+              You have become such a beautiful part of my life, and I'm so grateful for every little piece of it that I get to share with you.<br><br>
+              I don't know what every tomorrow will look like, but I know that I want to keep discovering them with you.<br><br>
+              ୨୧ So, if you ever wonder how much you mean to me...<br><br>
+              More than these little words could ever explain.<br>
+              A little more than yesterday, and probably a little less than tomorrow. ♡<br><br>
+              — with all my love, always.
+            </div>
+          </div>
+        </div>
+
+        <div class="center" style="margin-top:10px">
+          <button class="btn" onclick="openWin('moments')">NEXT →</button>
         </div>
       </div>
-      <div class="footer">somewhere between the stars, there is a little letter for you.</div>
-    </section>
+    </div>
+    <div class="status">6 letters &nbsp;|&nbsp; click to reveal</div>
+  </section>
 
-    <section class="content hidden" id="letter">
-      <div class="tiny">☾ a letter for you ☾</div>
-      <div class="secret-card" style="max-width:500px">
-        <div class="secret-text" id="finalText">Tu comptes énormément pour moi. Thank you for being there, especially on my hardest days. I love our little moments, our laughs, and simply being me with you. ୨୧</div>
-        <div style="font-size:21px">— with love, just for you —</div>
+  <section class="window" id="moments" style="left:18%;top:18%;width:min(540px,calc(100vw - 30px))">
+    <div class="titlebar blue">
+      <div class="title">little_moments.txt</div>
+      <div class="controls">
+        <button class="wbtn" onclick="minWin('moments')">_</button>
+        <button class="wbtn" onclick="closeWin('moments')">×</button>
       </div>
-      <div class="footer">✦ you can come back here whenever you want ✦</div>
-    </section>
-  </main>
-</div>
-<script>
-const hold=document.getElementById('hold'),bar=document.getElementById('bar');
-let timer=null,start=0,duration=1700;
-function begin(e){e.preventDefault(); if(timer)return; start=performance.now(); timer=requestAnimationFrame(loop)}
-function loop(now){const p=Math.min((now-start)/duration,1);bar.style.width=(p*100)+'%'; if(p<1) timer=requestAnimationFrame(loop); else unlock()}
-function end(){if(timer){cancelAnimationFrame(timer);timer=null;bar.style.width='0'}}
-function unlock(){timer=null;bar.style.width='100%';document.getElementById('start').classList.add('hidden');document.getElementById('secret').classList.remove('hidden');rain()}
-hold.addEventListener('pointerdown',begin);['pointerup','pointerleave','pointercancel'].forEach(x=>hold.addEventListener(x,end));
+    </div>
+    <div class="menu"><span>File</span><span>Edit</span><span>View</span></div>
+    <div class="body">
+      <div class="panel">
+        <div class="heading">little moments ☾</div>
+        <div class="message"><h3>01 — the little things</h3>Les regards, les rires, les habitudes et tous les petits détails qui finissent par devenir précieux.</div>
+        <div class="message"><h3>02 — home</h3>A little life together. Quiet evenings. Ordinary days. Nothing extraordinary — just something that feels like us.</div>
+        <div class="message"><h3>03 — still writing</h3>Il reste encore plein de pages à remplir, et c’est peut-être ça que j’aime le plus.</div>
+        <div class="center"><button class="btn" onclick="openWin('secret')">there is one more...</button></div>
+      </div>
+    </div>
+    <div class="status">3 moments loaded</div>
+  </section>
 
-document.getElementById('openLetter').addEventListener('click',()=>{document.getElementById('secret').classList.add('hidden');document.getElementById('letter').classList.remove('hidden');rain();typeText();});
-function typeText(){const el=document.getElementById('finalText'),text=el.textContent.trim();el.textContent='';let i=0;const t=setInterval(()=>{el.textContent+=text[i++]||'';if(i>=text.length)clearInterval(t)},18)}
-function rain(){for(let i=0;i<28;i++){const x=document.createElement('div');x.className='petal '+(Math.random()>.5?'heart':'spark');x.textContent=Math.random()>.5?'♡':'✦';x.style.left=Math.random()*100+'vw';x.style.animationDuration=(3+Math.random()*4)+'s';x.style.animationDelay=Math.random()*1.5+'s';document.body.appendChild(x);setTimeout(()=>x.remove(),8000)}}
-function closeFake(){alert('Nice try. You still have to finish the letter first. ♡')}
+  <section class="window" id="secret" style="left:53%;top:25%;width:min(490px,calc(100vw - 30px))">
+    <div class="titlebar green">
+      <div class="title">SECRET.EXE</div>
+      <div class="controls">
+        <button class="wbtn" onclick="minWin('secret')">_</button>
+        <button class="wbtn" onclick="closeWin('secret')">×</button>
+      </div>
+    </div>
+    <div class="menu"><span>Run</span><span>Tools</span><span>Help</span></div>
+    <div class="body">
+      <div class="terminal">
+        > initializing secret.exe<br>
+        > checking access...<br>
+        > user recognized: <span style="color:#f4a9bf">YOU</span><br>
+        > status: <span style="color:#c9dfcf">READY</span><br><br>
+        > one last thing is waiting...<span class="cursor"></span>
+      </div>
+
+      <div class="locked" id="locked">
+        <div class="lockicon">♡</div>
+        <div class="small">Hold the button until the secret unlocks.</div>
+        <div class="progress"><div class="fill" id="fill"></div></div>
+        <button class="btn" onmousedown="startHold()" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold()" ontouchend="stopHold()">HOLD ME</button>
+      </div>
+
+      <div id="final">
+        <div class="panel center">
+          <div class="heading">one last thing...</div>
+          <div class="message" id="typed"></div>
+          <div style="color:var(--pink-dark)">☾ ୨୧ ✦</div>
+        </div>
+      </div>
+    </div>
+    <div class="status">SECRET.EXE &nbsp;|&nbsp; access level: personal</div>
+  </section>
+</div>
+
+<div id="taskbar">
+  <button class="start" onclick="toggleStart()">⊞ Start</button>
+  <div class="tasks" id="tasks"></div>
+  <div class="clock" id="clock">00:00</div>
+</div>
+
+<div id="startMenu">
+  <div class="startHead">starlit-letter</div>
+  <div class="startItem" onclick="openWin('home');toggleStart()">♡ Home</div>
+  <div class="startItem" onclick="openWin('letters');toggleStart()">✦ Little letters</div>
+  <div class="startItem" onclick="openWin('moments');toggleStart()">☾ Little moments</div>
+  <div class="startItem" onclick="openWin('secret');toggleStart()">? Secret.exe</div>
+</div>
+
+<script>
+const names={
+  home:"♡ ST★RLIT_LETTER.EXE",
+  letters:"little_letters.txt",
+  moments:"little_moments.txt",
+  secret:"SECRET.EXE"
+};
+
+let z=20, drag=null, holdRAF=null, holding=false, holdStarted=0;
+
+function openWin(id){
+  const w=document.getElementById(id);
+  w.classList.add("open");
+  w.style.zIndex=++z;
+  updateTasks();
+}
+
+function closeWin(id){
+  document.getElementById(id).classList.remove("open");
+  updateTasks();
+}
+
+function minWin(id){
+  document.getElementById(id).classList.remove("open");
+  updateTasks();
+}
+
+function updateTasks(){
+  const t=document.getElementById("tasks");
+  t.innerHTML="";
+  Object.keys(names).forEach(id=>{
+    const w=document.getElementById(id);
+    if(w.classList.contains("open")){
+      const b=document.createElement("button");
+      b.className="task";
+      b.textContent=names[id];
+      b.onclick=()=>{w.classList.add("open");w.style.zIndex=++z};
+      t.appendChild(b);
+    }
+  });
+}
+
+document.querySelectorAll(".window").forEach(w=>{
+  w.addEventListener("mousedown",()=>w.style.zIndex=++z);
+
+  const bar=w.querySelector(".titlebar");
+  bar.addEventListener("mousedown",e=>{
+    if(e.target.closest(".controls"))return;
+    const r=w.getBoundingClientRect();
+    drag={w,x:e.clientX-r.left,y:e.clientY-r.top};
+
+    if(w.id==="home"){
+      w.style.left=r.left+"px";
+      w.style.top=r.top+"px";
+      w.style.transform="none";
+    }
+    e.preventDefault();
+  });
+});
+
+document.addEventListener("mousemove",e=>{
+  if(!drag)return;
+  const w=drag.w;
+  const maxX=innerWidth-w.offsetWidth-5;
+  const maxY=innerHeight-35-w.offsetHeight-5;
+  w.style.left=Math.max(5,Math.min(maxX,e.clientX-drag.x))+"px";
+  w.style.top=Math.max(5,Math.min(maxY,e.clientY-drag.y))+"px";
+});
+
+document.addEventListener("mouseup",()=>drag=null);
+
+function reveal(card){
+  card.classList.toggle("open");
+  const r=card.getBoundingClientRect();
+  sparkle({clientX:r.left+r.width/2,clientY:r.top+r.height/2});
+}
+
+function sparkle(e){
+  const symbols=["♡","✦","✧","୨୧","☾"];
+  for(let i=0;i<5;i++){
+    const p=document.createElement("div");
+    p.className="particle";
+    p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    p.style.left=(e.clientX+(Math.random()*30-15))+"px";
+    p.style.top=(e.clientY+(Math.random()*20-10))+"px";
+    p.style.setProperty("--x",(Math.random()*120-60)+"px");
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),1500);
+  }
+}
+
+function startHold(){
+  if(holding)return;
+  holding=true;
+  holdStarted=Date.now();
+
+  function tick(){
+    if(!holding)return;
+    const pct=Math.min(100,(Date.now()-holdStarted)/1800*100);
+    document.getElementById("fill").style.width=pct+"%";
+
+    if(pct>=100){
+      holding=false;
+      unlock();
+      return;
+    }
+    holdRAF=requestAnimationFrame(tick);
+  }
+  holdRAF=requestAnimationFrame(tick);
+}
+
+function stopHold(){
+  if(!holding)return;
+  holding=false;
+  cancelAnimationFrame(holdRAF);
+  document.getElementById("fill").style.width="0%";
+}
+
+function unlock(){
+  document.getElementById("locked").style.display="none";
+  document.getElementById("final").classList.add("show");
+
+  const text=`Tu as vraiment une place à part pour moi.
+
+Thank you for being there, especially on my hardest days.
+Thank you for listening to me, for making me laugh when I need it, for being gentle with me, and for caring about the little things.
+
+I love our little moments, our laughs, our stupid conversations, and all the quiet moments in between. I love that I can simply be myself with you, without having to pretend to be anything else.
+
+Je crois que ce que j'aime le plus, c'est tout ce qu'on construit sans même forcément s'en rendre compte. Les souvenirs, les habitudes, les petits moments qui paraissent insignifiants sur le coup, mais qui finissent par devenir précieux.
+
+You have become such a beautiful part of my life, and I'm so grateful for every little piece of it that I get to share with you.
+
+I don't know what every tomorrow will look like, but I know that I want to keep discovering them with you.
+
+୨୧ So, if you ever wonder how much you mean to me...
+
+More than these little words could ever explain.
+A little more than yesterday, and probably a little less than tomorrow. ♡
+
+— with all my love, always.`;
+
+  typeText(document.getElementById("typed"),text,11);
+
+  for(let i=0;i<8;i++){
+    setTimeout(()=>sparkle({
+      clientX:innerWidth/2+(Math.random()*220-110),
+      clientY:innerHeight/2+(Math.random()*140-70)
+    }),i*80);
+  }
+}
+
+function typeText(el,text,speed){
+  el.textContent="";
+  let i=0;
+  (function next(){
+    if(i<text.length){
+      el.textContent+=text[i++];
+      setTimeout(next,speed);
+    }
+  })();
+}
+
+function toggleStart(){
+  document.getElementById("startMenu").classList.toggle("open");
+}
+
+function updateClock(){
+  document.getElementById("clock").textContent=
+    new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+}
+updateClock();
+setInterval(updateClock,1000);
+
+openWin("home");
 </script>
 </body>
 </html>
